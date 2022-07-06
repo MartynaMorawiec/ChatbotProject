@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const MainPage = () => {
   return (
@@ -19,9 +20,13 @@ const MainPage = () => {
         </div>
         <div className="flex justify-center">
           <div className="absolute bottom-[2em] w-[70%] rounded-full bg-blue-500 text-white p-3 h-[70px] hover:bg-blue-600 cursor-pointer flex justify-center items-center">
-            <a href="" className="flex justify-center text-2xl tracking-wider">
+            <Link
+              exact
+              to="/chatbot"
+              className="flex justify-center text-2xl tracking-wider"
+            >
               Get started
-            </a>
+            </Link>
           </div>
         </div>
       </div>
