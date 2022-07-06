@@ -5,8 +5,42 @@
     <link rel="icon" type="image/svg+xml" href="/src/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script
+    src="https://kit.fontawesome.com/482efb0230.js"
+    crossorigin="anonymous"
+    ></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: '#da373d',
+            },
+            keyframes: {
+              wave: {
+                '0%': { transform: 'rotate(0.0deg)' },
+                '10%': { transform: 'rotate(14deg)' },
+                '20%': { transform: 'rotate(-8deg)' },
+                '30%': { transform: 'rotate(14deg)' },
+                '40%': { transform: 'rotate(-4deg)' },
+                '50%': { transform: 'rotate(10.0deg)' },
+                '60%': { transform: 'rotate(0.0deg)' },
+                '100%': { transform: 'rotate(0.0deg)' },
+              },
+            },
+            animation: {
+              'waving-hand': 'wave 2s linear infinite',
+            },
+            screens: {
+              'xs': '375px',
+            },
+          }
+        }
+      }
+    </script>
+   
     <link rel="stylesheet" href="./src/styles/tailwind.css">
-    <title>Vite App</title>
+    <title>Chatbot</title>
   </head>
   <body>
     <div id="root"></div>
