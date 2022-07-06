@@ -10,11 +10,11 @@ const MainPage = () => {
             Chatbot
           </h2>
         </header>
-        <div className="h-full xs:mt-[1em] xs:mb-[3em] relative bottom-[300px] flex justify-center items-center text-4xl mb-[1.5em]">
+        <div className="h-full mt-[1em] mb-[3em] mx-8 relative bottom-[300px] flex justify-center items-center text-4xl md:mb-[1.5em]">
           <p className="animate-waving-hand p-3 text-5xl">👋 </p>
           <h1 className="text-blue-600 font-bold">Welcome to Chatbot!</h1>
         </div>
-        <div className="flex justify-center relative xs:bottom-[50em]">
+        <div className="flex justify-center relative bottom-[45em]">
           <img src="../src/assets/chat.png" className="w-[350px]" />
         </div>
         <div className="flex justify-center">
