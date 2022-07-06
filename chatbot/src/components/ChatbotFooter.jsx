@@ -13,8 +13,8 @@ const Footer = () => {
           <i className="fa-solid fa-paper-plane text-blue-500 hover:text-blue-600 text-[2rem] rotate-[40deg]"></i>
         </button>
       </form>
-      <button className="bg-blue-500 w-[4em] h-[4em] mt-[1em] mr-3 mb-[65px] md:mb-[120px] rounded-full text-white text-sm hover:bg-blue-600">
-        <i className="fa-solid fa-microphone text-xl"></i>
+      <button className="bg-blue-500 w-[4em] h-[4em] mt-[1em] mr-3 mb-[65px] md:mb-[120px] rounded-full text-white text-sm hover:bg-blue-600 flex justify-center items-center">
+        <i className="fa-solid fa-microphone text-xl p-6"></i>
         {/* <i className="fa-solid fa-microphone-slash"></i> */}
       </button>
     </footer>

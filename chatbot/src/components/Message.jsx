@@ -43,8 +43,8 @@ const Message = () => {
         />
       </section>
 
-      <section className="flex flex-col max-w-[200px] rounded-lg overflow-hidden">
-        <button className="text-base py-1 text-blue-800 bg-neutral-200 hover:bg-blue-500 hover:text-white ">
+      <section className="flex flex-col max-w-[200px] rounded-xl overflow-hidden">
+        <button className="text-base py-2 text-blue-800 bg-neutral-100 hover:bg-blue-500 hover:text-white ">
           <a
             href="https://www.google.pl/"
             target="_blank"
