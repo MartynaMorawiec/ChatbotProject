@@ -11,8 +11,8 @@ function App() {
       <MainPage /> */}
       <BrowserRouter>
         <Routes>
-          <Route exact path="/" element={<MainPage />} />
-          <Route exact path="/chatbot" element={<Chatbot />} />
+          <Route path="/" element={<MainPage />} />
+          <Route path="/chatbot" element={<Chatbot />} />
         </Routes>
       </BrowserRouter>
     </>
