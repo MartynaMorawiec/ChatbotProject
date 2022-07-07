@@ -7,7 +7,7 @@ import MessageDate from "./MessageDate";
 const ChatbotLayout = () => {
   return (
     <div className="p-1 flex justify-center h-screen bg-neutral-100 overflow-hidden">
-      <div className="max-w-3xl border-2 border-neutral-200 relative rounded-lg overflow-hidden bg-white h-screen">
+      <div className="max-w-3xl w-[768px] border-2 border-neutral-200 relative rounded-lg overflow-hidden bg-white h-screen">
         <ChatbotHeader />
         <MessageDate />
 

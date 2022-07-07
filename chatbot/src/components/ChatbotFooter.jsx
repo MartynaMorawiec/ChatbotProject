@@ -7,7 +7,7 @@ const Footer = () => {
         <input
           type="text"
           placeholder="Type something"
-          className="w-[70%] border-solid border-2 border-neutral-200 rounded-xl p-2 md:w-[85%] focus:outline-blue-500"
+          className="w-[70%] md:w-[85%] border-solid border-2 border-neutral-200 rounded-xl p-2 focus:outline-blue-500"
         />
         <button className="p-[8px] text-lg font-bold">
           <i className="fa-solid fa-paper-plane text-blue-500 hover:text-blue-600 text-[2rem] rotate-[40deg]"></i>
