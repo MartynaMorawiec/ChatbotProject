@@ -4,7 +4,7 @@ import Loading from "./Loading";
 
 const ChatbotContent = () => {
   return (
-    <div className="h-[65%] md:h-[75%] overflow-auto space-y-4 py-4">
+    <div className="relative max-h-[65%] md:max-h-[70%] overflow-auto space-y-4">
       <Message />
       <Loading />
       <Message />

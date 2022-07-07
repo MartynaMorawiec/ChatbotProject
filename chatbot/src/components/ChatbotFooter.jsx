@@ -2,19 +2,19 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="absolute bg-white bottom-0 w-full flex justify-between items-center px-8">
-      <form className="w-full mt-[2px] mb-6">
+    <footer className="bg-white absolute bottom-0 w-full flex justify-between items-center px-8">
+      <form className="w-full mt-[2px] mb-4">
         <input
           type="text"
-          placeholder="Type something"
-          className="w-[70%] md:w-[85%] border-solid border-2 border-neutral-200 rounded-xl p-2 focus:outline-blue-500"
+          placeholder="Type something..."
+          className="w-[70%] md:w-[85%] bg-neutral-100 rounded-xl p-3 focus:outline-secondary focus:bg-focus"
         />
-        <button className="p-[8px] text-lg font-bold">
-          <i className="fa-solid fa-paper-plane text-blue-500 hover:text-blue-600 text-[2rem] rotate-[40deg]"></i>
+        <button className="text-xl font-bold">
+          <i className="fa-solid fa-paper-plane text-secondary hover:text-primary text-[2rem] sm:text-[2.5rem] ml-2 rotate-[40deg] drop-shadow-xlBlue"></i>
         </button>
       </form>
-      <button className="bg-blue-500 w-[4em] h-[4em] mt-[1em] mr-3 mb-6 rounded-full text-white text-sm hover:bg-blue-600 flex justify-center items-center">
-        <i className="fa-solid fa-microphone text-xl p-6"></i>
+      <button className="bg-secondary hover:bg-primary w-[4em] h-[4em] mt-[1em] mr-6 mb-6 rounded-full text-white text-sm flex justify-center items-center shadow-blue">
+        <i className="fa-solid fa-microphone text-3xl p-6"></i>
         {/* <i className="fa-solid fa-microphone-slash"></i> */}
       </button>
     </footer>

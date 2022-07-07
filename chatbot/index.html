@@ -14,8 +14,20 @@
         theme: {
           extend: {
             colors: {
-              clifford: '#da373d',
+              primary: '#246BFD',
+              secondary: '#3C7CFE',
+              focus: '#EEF4FF',
             },
+            fontFamily: {
+              'urbanist': ['"Urbanist"', 'sans-serif']
+            },
+            boxShadow: {
+              blue: '0 20px 85px -5px rgba(0, 0, 0, 0.1), 0 10px 15px -4px rgba(60, 124, 254, 0.8)',
+            },
+            dropShadow: {
+              'xlBlue': '(0 30px 33px rgba(60, 124, 254, 0.8))',
+            },
+
             keyframes: {
               wave: {
                 '0%': { transform: 'rotate(0.0deg)' },
@@ -35,7 +47,11 @@
         }
       }
     </script>
-   
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="./src/styles/tailwind.css">
     <title>Chatbot</title>
   </head>
