@@ -3,9 +3,9 @@ import React from "react";
 
 const Message = () => {
   return (
-    <div className="space-y-6 px-8">
+    <div className="h-[70%] space-y-6 px-8">
       <section className="flex justify-end">
-        <div className="bg-primary rounded-3xl rounded-br-lg p-[12px] text-white max-w-[75%]">
+        <div className="bg-primary rounded-3xl rounded-br-md p-5 text-white text-base sm:text-lg max-w-[75%]">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque magnam
           pariatur aliquid reiciendis quaerat repellendus amet? Deserunt,
           accusantium!
@@ -14,7 +14,7 @@ const Message = () => {
       </section>
 
       <section className="flex">
-        <div className="bg-neutral-100 rounded-3xl rounded-tl-lg p-[12px] text-neutral-900 max-w-[75%]">
+        <div className="bg-neutral-100 rounded-3xl rounded-tl-lg p-5 text-base sm:text-lg text-neutral-900 max-w-[75%]">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus
           deleniti quidem qui obcaecati quos quae ad, perferendis nisi
           repudiandae, in aspernatur porro voluptas delectus iusto? Nesciunt
@@ -28,11 +28,11 @@ const Message = () => {
           src="https://www.visitdubai.com/-/media/gathercontent/article/t/top-rides-at-img-worlds-of-adventure/media/top-rides-at-img-worlds-of-adventure-predator-5.jpg?rev=f1bb54a15add49a09c912eac851f4ff7&cx=0.56&cy=0.4&cw=397&ch=397"
           className=""
         />
-        <p className="leading-tight text-sm p-1 bg-neutral-100">
+        <p className="leading-tight text-sm p-3 bg-neutral-100">
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Possimus,
           eius tempora?
         </p>
-        <button className="text-base py-2 bg-neutral-200 hover:bg-primary hover:text-white">
+        <button className="text-base py-2 bg-neutral-200 hover:bg-primary text-neutral-900  hover:text-white">
           <a href="">Learn more</a>
         </button>
       </section>
@@ -45,7 +45,7 @@ const Message = () => {
       </section>
 
       <section className="flex flex-col w-6/12 rounded-2xl overflow-hidden">
-        <button className="text-base py-2 text-secondary bg-neutral-100 hover:bg-primary hover:text-white ">
+        <button className="text-base sm:text-lg py-2 text-secondary bg-neutral-100 hover:bg-primary hover:text-white focus:shadow-inner">
           <a
             href="https://www.google.pl/"
             target="_blank"
