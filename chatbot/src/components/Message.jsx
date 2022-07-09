@@ -29,13 +29,14 @@ const Message = ({ actor, type, content }) => {
 
       {actor == "bot" && type === "card" && (
         <section className="flex flex-col max-w-[50%] rounded-2xl overflow-hidden">
-          <img src={content} className="" />
+          <img src={content[0]} />
           <p className="bg-neutral-100 text-sm p-3 leading-tight">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Possimus,
-            eius tempora?
+            {content[1]}
           </p>
           <button className="py-2 bg-neutral-200 hover:bg-primary text-base text-neutral-900  hover:text-white">
-            <a href="">Learn more</a>
+            <a href={content[2]} target="_blank">
+              Learn more
+            </a>
           </button>
         </section>
       )}

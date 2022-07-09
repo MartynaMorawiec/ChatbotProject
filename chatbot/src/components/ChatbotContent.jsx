@@ -11,9 +11,11 @@ const ChatbotContent = () => {
       <Message
         actor="bot"
         type="card"
-        content={
-          "https://www.visitdubai.com/-/media/gathercontent/article/t/top-rides-at-img-worlds-of-adventure/media/top-rides-at-img-worlds-of-adventure-predator-5.jpg?rev=f1bb54a15add49a09c912eac851f4ff7&cx=0.56&cy=0.4&cw=397&ch=397"
-        }
+        content={[
+          "https://images.theconversation.com/files/370685/original/file-20201123-13-x1rq79.jpg?ixlib=rb-1.1.0&rect=8%2C0%2C5422%2C3628&q=20&auto=format&w=320&fit=clip&dpr=2&usm=12&cs=strip",
+          "Jujubes bonbon cookie danish pudding chocolate I love bonbon tart.",
+          "https://www.google.pl/",
+        ]}
       />
       <Message
         actor="bot"
