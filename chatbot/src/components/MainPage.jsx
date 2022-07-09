@@ -3,33 +3,30 @@ import { Link } from "react-router-dom";
 
 const MainPage = () => {
   return (
-    <div className="flex justify-center h-screen overflow-hidden bg-neutral-200 font-urbanist font-medium tracking-wider">
-      <div className="max-w-3xl w-[768px] h-[100%] relative overflow-hidden bg-white shadow-lg">
-        <header className="bg-gradient-to-br from-secondary via-secondary to-primary h-[120px] w-full flex items-center pl-12 relative z-10">
+    <div className="flex justify-center h-screen bg-neutral-200 font-urbanist font-medium tracking-wider overflow-hidden">
+      <div className="relative max-w-3xl w-[768px] h-[100%] overflow-hidden bg-white shadow-lg">
+        <header className="relative z-10 flex items-center h-[120px] w-full pl-12 bg-gradient-to-br from-secondary via-secondary to-primary">
           <img src="./src/assets/botSmile.png" className="w-16 mr-5" />
-          <h2 className="text-3xl text-white font-bold tracking-wider">
+          <h2 className="text-white text-3xl font-bold tracking-wider">
             Chatbot
           </h2>
         </header>
         <main className="relative h-[300px]">
-          <div className=" w-full absolute top-[100px] h-[5vh] flex justify-center items-center text-5xl z-10">
-            <p className="animate-waving-hand pl-8 pr-6 text-5xl text-center"></p>
-            <h1 className="text-primary font-bold pr-10 text-center">
+          <div className="absolute top-[100px] z-10 flex justify-center items-center w-full h-[5vh] text-5xl">
+            {/* <p className="animate-waving-hand pl-8 pr-6 text-5xl text-center"></p> */}
+            <h1 className="text-primary text-center font-bold">
               Welcome to Chatbot!
             </h1>
           </div>
-          <div className="flex justify-center items-center relative top-[calc(20vh)] h-[calc(50vh-10px)] ">
-            <img
-              src="../src/assets/idea.svg"
-              className="max-w-[65%] absolute"
-            />
+          <div className="relative top-[calc(20vh)] h-[calc(50vh-10px)] flex justify-center items-center">
+            <img src="../src/assets/idea.svg" className="max-w-[65%]" />
           </div>
         </main>
         <div className="flex justify-center">
-          <div className="absolute bottom-[4em] w-[85%] mt-6 rounded-full bg-secondary text-white py-5 hover:bg-primary cursor-pointer flex justify-center items-center shadow-blue">
+          <div className="absolute bottom-[4em] z-20 flex justify-center items-center w-[85%] mt-6 bg-secondary rounded-full text-white py-5 hover:bg-primary cursor-pointer shadow-blue">
             <Link
               to="/chatbot"
-              className="flex justify-center text-2xl tracking-wider font-bold"
+              className="flex justify-center text-2xl font-bold tracking-wider"
             >
               Get started
             </Link>
