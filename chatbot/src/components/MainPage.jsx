@@ -5,10 +5,8 @@ const MainPage = () => {
   return (
     <div className="flex justify-center h-screen overflow-hidden bg-neutral-200 font-urbanist font-medium tracking-wider">
       <div className="max-w-3xl w-[768px] h-[100%] relative overflow-hidden bg-white shadow-lg">
-        <header className="bg-gradient-to-br from-secondary via-secondary to-primary h-[120px] w-full flex items-center pl-12">
-          <div className="">
-            <img src="./src/assets/botSmile.png" className="w-16 mr-5" />
-          </div>
+        <header className="bg-gradient-to-br from-secondary via-secondary to-primary h-[120px] w-full flex items-center pl-12 relative z-10">
+          <img src="./src/assets/botSmile.png" className="w-16 mr-5" />
           <h2 className="text-3xl text-white font-bold tracking-wider">
             Chatbot
           </h2>
@@ -20,7 +18,7 @@ const MainPage = () => {
               Welcome to Chatbot!
             </h1>
           </div>
-          <div className="flex justify-center items-center relative top-[120px] h-[calc(50vh-10px)] ">
+          <div className="flex justify-center items-center relative top-[calc(20vh)] h-[calc(50vh-10px)] ">
             <img
               src="../src/assets/idea.svg"
               className="max-w-[65%] absolute"
