@@ -32,7 +32,6 @@ const ChatbotContent = () => {
         content={{ link: "https://www.google.pl/" }}
       />
       <Loading time={2} />
-      <Message />
     </div>
   );
 };
