@@ -38,7 +38,7 @@ const chatMessages = [
     type: "image",
     content: {
       image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQC_zqOhM-xbA6kgBlpbx0JqRAs2DKMt1LI6w&usqp=CAU",
+        "https://www.incimages.com/uploaded_files/image/1920x1080/getty_912592258_366180.jpg",
     },
   },
   {
@@ -53,7 +53,35 @@ const chatMessages = [
 
 const ChatbotLayout = () => {
   const [messages, setMessages] = useState(chatMessages);
-  console.log(setMessages);
+
+  const send = (message) => {
+    setMessages((prevMessages) => [
+      ...prevMessages,
+      {
+        id: 9,
+        actor: "user",
+        type: "text",
+        content: {
+          text: message,
+        },
+      },
+    ]);
+  };
+
+  const record = (message) => {
+    setMessages((prevMessages) => [
+      ...prevMessages,
+      {
+        id: 10,
+        actor: "user",
+        type: "text",
+        content: {
+          text: message,
+        },
+      },
+    ]);
+  };
+
   return (
     <div className="flex justify-center items-center h-screen bg-neutral-200 overflow-hidden">
       <div className="relative max-w-3xl w-[768px] h-screen bg-white font-urbanist font-medium tracking-wider overflow-hidden shadow-lg">
@@ -62,7 +90,7 @@ const ChatbotLayout = () => {
 
         <ChatbotContent messages={messages} />
 
-        <ChatbotFooter />
+        <ChatbotFooter onSend={send} onRecord={record} />
       </div>
     </div>
   );

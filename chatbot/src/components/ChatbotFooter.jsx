@@ -1,20 +1,34 @@
 import "regenerator-runtime";
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
 
-const Footer = () => {
+const ChatbotFooter = ({ onSend, onRecord }) => {
   const [isListening, setIsListening] = useState(false);
-  const { transcript } = useSpeechRecognition();
+  const { transcript, resetTranscript } = useSpeechRecognition();
+  const [input, setInput] = useState("");
+
+  console.log(onRecord);
 
   useEffect(() => {
     handleListen();
   }, [isListening]);
 
+  const handleSend = (event) => {
+    event.preventDefault();
+    if (typeof onSend === "function") {
+      onSend(input);
+      setInput("");
+    }
+  };
+
   const handleListen = () => {
     if (transcript !== "") {
       console.log("Result:", transcript);
+      onRecord(transcript);
+      resetTranscript;
     }
 
     if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
@@ -35,11 +49,14 @@ const Footer = () => {
 
   return (
     <footer className="absolute bottom-0 w-full flex justify-between items-center h-[80px] px-8 bg-white">
-      <form className="flex items-center w-full mb-3">
+      <form onSubmit={handleSend} className="flex items-center w-full mb-3">
         <input
           type="text"
           placeholder="Type something..."
           className="w-[85%] p-3 bg-neutral-100 rounded-xl focus:outline-secondary focus:bg-focus"
+          name="input"
+          value={input}
+          onChange={(event) => setInput(event.target.value)}
         />
         <button className="text-xl font-bold">
           <i className="fa-solid fa-paper-plane ml-2 mr-2 mb-2 text-[2rem] sm:text-[2.5rem] text-secondary hover:text-primary rotate-[40deg]"></i>
@@ -56,4 +73,9 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+ChatbotFooter.propTypes = {
+  onSend: PropTypes.func,
+  onRecord: PropTypes.func,
+};
+
+export default ChatbotFooter;
