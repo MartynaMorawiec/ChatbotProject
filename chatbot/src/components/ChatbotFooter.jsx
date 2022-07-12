@@ -1,3 +1,4 @@
+import "regenerator-runtime";
 import React, { useState, useEffect } from "react";
 import SpeechRecognition, {
   useSpeechRecognition,
