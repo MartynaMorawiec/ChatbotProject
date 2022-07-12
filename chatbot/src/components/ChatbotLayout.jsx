@@ -58,7 +58,7 @@ const ChatbotLayout = () => {
     setMessages((prevMessages) => [
       ...prevMessages,
       {
-        id: 9,
+        id: prevMessages.length + 1,
         actor: "user",
         type: "text",
         content: {
@@ -68,11 +68,11 @@ const ChatbotLayout = () => {
     ]);
   };
 
-  const record = (message) => {
+  const voice = (message) => {
     setMessages((prevMessages) => [
       ...prevMessages,
       {
-        id: 10,
+        id: prevMessages + 2,
         actor: "user",
         type: "text",
         content: {
@@ -90,7 +90,7 @@ const ChatbotLayout = () => {
 
         <ChatbotContent messages={messages} />
 
-        <ChatbotFooter onSend={send} onRecord={record} />
+        <ChatbotFooter onSend={send} onVoice={voice} />
       </div>
     </div>
   );

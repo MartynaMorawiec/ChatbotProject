@@ -5,12 +5,10 @@ import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
 
-const ChatbotFooter = ({ onSend, onRecord }) => {
+const ChatbotFooter = ({ onSend, onVoice }) => {
   const [isListening, setIsListening] = useState(false);
-  const { transcript, resetTranscript } = useSpeechRecognition();
+  const { transcript } = useSpeechRecognition();
   const [input, setInput] = useState("");
-
-  console.log(onRecord);
 
   useEffect(() => {
     handleListen();
@@ -25,10 +23,9 @@ const ChatbotFooter = ({ onSend, onRecord }) => {
   };
 
   const handleListen = () => {
-    if (transcript !== "") {
+    if (transcript !== "" && !isListening) {
       console.log("Result:", transcript);
-      onRecord(transcript);
-      resetTranscript;
+      onVoice(transcript);
     }
 
     if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
@@ -39,7 +36,7 @@ const ChatbotFooter = ({ onSend, onRecord }) => {
 
     if (isListening) {
       SpeechRecognition.startListening({
-        continuous: true,
+        continuous: false,
         language: "en-US",
       });
     } else {
@@ -62,20 +59,29 @@ const ChatbotFooter = ({ onSend, onRecord }) => {
           <i className="fa-solid fa-paper-plane ml-2 mr-2 mb-2 text-[2rem] sm:text-[2.5rem] text-secondary hover:text-primary rotate-[40deg]"></i>
         </button>
       </form>
-      <button
-        onClick={() => setIsListening((prevState) => !prevState)}
-        className="flex justify-center items-center w-[3.5em] h-[3.5em] sm:w-[4em] sm:h-[4em] ml-2 mr-2 mb-7 mt-[1em] bg-secondary hover:bg-primary text-white text-sm rounded-full shadow-blue"
-      >
-        <i className="fa-solid fa-microphone p-6 text-2xl sm:text-3xl"></i>
-        {/* <i className="fa-solid fa-microphone-slash"></i> */}
-      </button>
+      {!isListening && (
+        <button
+          onClick={() => setIsListening((prevState) => !prevState)}
+          className="flex justify-center items-center w-[3.5em] h-[3.5em] sm:w-[4em] sm:h-[4em] ml-2 mr-2 mb-7 mt-[1em] bg-secondary hover:bg-primary text-white text-sm rounded-full shadow-blue"
+        >
+          <i className="fa-solid fa-microphone p-6 text-2xl sm:text-3xl"></i>
+        </button>
+      )}
+      {isListening && (
+        <button
+          onClick={() => setIsListening((prevState) => !prevState)}
+          className="flex justify-center items-center w-[3.5em] h-[3.5em] sm:w-[4em] sm:h-[4em] ml-2 mr-2 mb-7 mt-[1em] bg-secondary hover:bg-primary text-white text-sm rounded-full shadow-blue animate-pulse"
+        >
+          <i className="fa-solid fa-microphone p-6 text-2xl sm:text-3xl"></i>
+        </button>
+      )}
     </footer>
   );
 };
 
 ChatbotFooter.propTypes = {
   onSend: PropTypes.func,
-  onRecord: PropTypes.func,
+  onVoice: PropTypes.func,
 };
 
 export default ChatbotFooter;
