@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ChatbotContent from "./ChatbotContent";
 import ChatbotFooter from "./ChatbotFooter";
 import ChatbotHeader from "./ChatbotHeader";
@@ -51,28 +51,48 @@ const chatMessages = [
   },
 ];
 
+const API = {
+  GetChatbotResponse: async () => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(chatMessages[1].content.text);
+      }, 2000);
+    });
+  },
+};
+
 const ChatbotLayout = () => {
   const [messages, setMessages] = useState(chatMessages);
 
+  useEffect(() => {
+    chatbotMessage();
+  }, [setMessages]);
+
+  const chatbotMessage = () => {
+    async () => await API.GetChatbotResponse();
+  };
+
   const send = (message) => {
-    setMessages((prevMessages) => [
-      ...prevMessages,
-      {
-        id: prevMessages.length + 1,
-        actor: "user",
-        type: "text",
-        content: {
-          text: message,
+    if (message !== "") {
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        {
+          id: prevMessages.length + 1,
+          actor: "user",
+          type: "text",
+          content: {
+            text: message,
+          },
         },
-      },
-    ]);
+      ]);
+    }
   };
 
   const voice = (message) => {
     setMessages((prevMessages) => [
       ...prevMessages,
       {
-        id: prevMessages + 2,
+        id: prevMessages.length + 2,
         actor: "user",
         type: "text",
         content: {
@@ -88,7 +108,7 @@ const ChatbotLayout = () => {
         <ChatbotHeader />
         <MessageDate />
 
-        <ChatbotContent messages={messages} />
+        <ChatbotContent messages={messages} fetchMessage={chatbotMessage} />
 
         <ChatbotFooter onSend={send} onVoice={voice} />
       </div>

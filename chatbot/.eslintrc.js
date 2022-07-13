@@ -2,6 +2,7 @@ module.exports = {
   env: {
     node: true,
     browser: true,
+    es6: true,
   },
   parserOptions: {
     ecmaFeatures: {
@@ -10,13 +11,9 @@ module.exports = {
     ecmaVersion: 2022,
     sourceType: "module",
   },
-  extends: [
-    'eslint:recommended',
-    'plugin:react/recommended',
-    'prettier',
-  ],
+  extends: ["eslint:recommended", "plugin:react/recommended", "prettier"],
   rules: {
     // override/add rules settings here, such as:
     // 'vue/no-unused-vars': 'error'
-  }
-}
+  },
+};

@@ -16,10 +16,8 @@ const ChatbotFooter = ({ onSend, onVoice }) => {
 
   const handleSend = (event) => {
     event.preventDefault();
-    if (typeof onSend === "function") {
-      onSend(input);
-      setInput("");
-    }
+    onSend(input);
+    setInput("");
   };
 
   const handleListen = () => {
