@@ -51,25 +51,34 @@ const chatMessages = [
   },
 ];
 
-const API = {
-  GetChatbotResponse: async () => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(chatMessages[1].content.text);
-      }, 2000);
-    });
-  },
-};
-
 const ChatbotLayout = () => {
   const [messages, setMessages] = useState(chatMessages);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     chatbotMessage();
-  }, [setMessages]);
+  }, [messages]);
 
   const chatbotMessage = () => {
-    async () => await API.GetChatbotResponse();
+    if (messages.length && messages[messages.length - 1].actor === "user") {
+      setTimeout(() => {
+        setMessages((prevMessages) => {
+          return [
+            ...prevMessages,
+            {
+              id: prevMessages.length + 100,
+              actor: "bot",
+              type: "text",
+              content: {
+                text: "Lorem ipsum",
+              },
+            },
+          ];
+        });
+        setLoading(false);
+      }, 2000);
+      setLoading(true);
+    }
   };
 
   const send = (message) => {
@@ -92,7 +101,7 @@ const ChatbotLayout = () => {
     setMessages((prevMessages) => [
       ...prevMessages,
       {
-        id: prevMessages.length + 2,
+        id: prevMessages.length + 200,
         actor: "user",
         type: "text",
         content: {
@@ -108,7 +117,7 @@ const ChatbotLayout = () => {
         <ChatbotHeader />
         <MessageDate />
 
-        <ChatbotContent messages={messages} fetchMessage={chatbotMessage} />
+        <ChatbotContent messages={messages} loading={loading} />
 
         <ChatbotFooter onSend={send} onVoice={voice} />
       </div>

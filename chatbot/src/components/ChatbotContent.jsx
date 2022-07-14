@@ -1,11 +1,10 @@
 import React, { useRef, useEffect } from "react";
 import Message from "./Message";
-import Loading from "./Loading";
 import PropTypes from "prop-types";
+import Loading from "./Loading";
 
-const ChatbotContent = ({ messages, fetchMessage }) => {
+const ChatbotContent = ({ messages, loading }) => {
   const element = useRef(null);
-  console.log(fetchMessage);
 
   useEffect(() => {
     element.current.scrollIntoView({ block: "end", behavior: "smooth" });
@@ -21,15 +20,16 @@ const ChatbotContent = ({ messages, fetchMessage }) => {
           content={message.content}
         />
       ))}
-      <Loading />
+      <div>{loading && <Loading />}</div>
+
       <div id={"el"} ref={element}></div>
     </div>
   );
 };
 
 ChatbotContent.propTypes = {
-  messages: PropTypes.any,
-  fetchMessage: PropTypes.func,
+  messages: PropTypes.array,
+  loading: PropTypes.bool,
 };
 
 export default ChatbotContent;
