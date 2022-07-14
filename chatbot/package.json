@@ -10,8 +10,10 @@
     "format": "prettier .  --write"
   },
   "dependencies": {
+    "emoji-picker-react": "^3.5.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
+    "react-input-emoji": "^4.1.0",
     "react-router-dom": "^6.3.0",
     "react-speech-recognition": "^3.9.1",
     "regenerator-runtime": "^0.13.9"

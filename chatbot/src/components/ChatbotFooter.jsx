@@ -4,11 +4,14 @@ import PropTypes from "prop-types";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
+// import InputEmoji from "react-input-emoji";
+import Picker from "emoji-picker-react";
 
 const ChatbotFooter = ({ onSend, onVoice }) => {
   const [isListening, setIsListening] = useState(false);
   const { transcript } = useSpeechRecognition();
-  const [input, setInput] = useState("");
+  const [text, setText] = useState("");
+  const [showPicker, setShowPicker] = useState(false);
 
   useEffect(() => {
     handleListen();
@@ -16,8 +19,8 @@ const ChatbotFooter = ({ onSend, onVoice }) => {
 
   const handleSend = (event) => {
     event.preventDefault();
-    onSend(input);
-    setInput("");
+    onSend(text);
+    setText("");
   };
 
   const handleListen = () => {
@@ -42,19 +45,44 @@ const ChatbotFooter = ({ onSend, onVoice }) => {
     }
   };
 
+  const onEmojiClick = (event, emojiObject) => {
+    setText((prevText) => prevText + emojiObject.emoji);
+    setShowPicker(false);
+  };
+
   return (
-    <footer className="absolute bottom-0 w-full flex justify-between items-center h-[80px] px-8 bg-white">
-      <form onSubmit={handleSend} className="flex items-center w-full mb-3">
+    <footer className="absolute bottom-0 w-full justify-between flex items-center h-[80px] px-8 bg-white">
+      <form
+        onSubmit={handleSend}
+        className="flex items-center w-full mb-3 relative"
+      >
         <input
           type="text"
           placeholder="Type something..."
-          className="w-[85%] p-3 bg-neutral-100 rounded-xl focus:outline-secondary focus:bg-focus"
-          name="input"
-          value={input}
-          onChange={(event) => setInput(event.target.value)}
+          className="w-[85%] p-3 pl-12 bg-neutral-100 rounded-xl focus:outline-secondary focus:bg-focus"
+          name="text"
+          value={text}
+          onChange={(event) => setText(event.target.value)}
         />
+        <img
+          className="w-[22px] absolute top-[28%] left-[3%]"
+          src="../src/assets/smileBlack.png"
+          onClick={() => setShowPicker((val) => !val)}
+        />
+        {showPicker && (
+          <Picker
+            pickerStyle={{
+              width: "100%",
+              position: "absolute",
+              bottom: "55px",
+              left: 0,
+            }}
+            onEmojiClick={onEmojiClick}
+          />
+        )}
+
         <button className="text-xl font-bold">
-          <i className="fa-solid fa-paper-plane ml-2 mr-2 mb-2 text-[2rem] sm:text-[2.5rem] text-secondary hover:text-primary rotate-[40deg]"></i>
+          <i className="fa-solid fa-paper-plane mr-3 ml-2 mb-2 text-[2rem] sm:text-[2.5rem] text-secondary hover:text-primary rotate-[40deg]"></i>
         </button>
       </form>
       {!isListening && (
