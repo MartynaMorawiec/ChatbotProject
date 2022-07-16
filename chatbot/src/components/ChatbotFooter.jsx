@@ -64,21 +64,30 @@ const ChatbotFooter = ({ onSend, onVoice }) => {
           value={text}
           onChange={(event) => setText(event.target.value)}
         />
-        <img
-          className="w-[22px] absolute top-[28%] left-[3%]"
-          src="../src/assets/smileBlack.png"
-          onClick={() => setShowPicker((val) => !val)}
-        />
-        {showPicker && (
-          <Picker
-            pickerStyle={{
-              width: "100%",
-              position: "absolute",
-              bottom: "55px",
-              left: 0,
-            }}
-            onEmojiClick={onEmojiClick}
+        {!showPicker && (
+          <img
+            className="w-[21px] absolute top-[28%] left-[3%]"
+            src="../src/assets/smileBlack.png"
+            onClick={() => setShowPicker((val) => !val)}
           />
+        )}
+        {showPicker && (
+          <>
+            <img
+              className="w-[22px] absolute top-[28%] left-[3%]"
+              src="../src/assets/happy.png"
+              onClick={() => setShowPicker((val) => !val)}
+            />
+            <Picker
+              pickerStyle={{
+                width: "100%",
+                position: "absolute",
+                bottom: "55px",
+                left: 0,
+              }}
+              onEmojiClick={onEmojiClick}
+            />
+          </>
         )}
 
         <button className="text-xl font-bold">
