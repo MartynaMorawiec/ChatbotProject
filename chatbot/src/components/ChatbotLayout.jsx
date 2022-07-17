@@ -3,12 +3,14 @@ import ChatbotContent from "./ChatbotContent";
 import ChatbotFooter from "./ChatbotFooter";
 import ChatbotHeader from "./ChatbotHeader";
 import MessageDate from "./MessageDate";
+// import moment from "moment";
 
 const chatMessages = [
   {
     id: 1,
     actor: "user",
     type: "text",
+    time: Date.now(),
     content: {
       text: "Hello",
     },
@@ -17,6 +19,7 @@ const chatMessages = [
     id: 2,
     actor: "bot",
     type: "text",
+    time: Date.now(),
     content: {
       text: "Good Morning",
     },
@@ -51,18 +54,10 @@ const chatMessages = [
   },
 ];
 
-// const q = encodeURIComponent("Weather in Warsaw");
-// const uri = "https://api.wit.ai/message?v=20220715&q=" + q;
-// const auth = "Bearer 27MH4HGADT6RFFQ6F5KHHRB56R5PMHCH";
-// fetch(uri, { headers: { Authorization: auth } })
-//   .then((res) => res.json())
-//   .then((res) => console.log(res));
-
 const u = `&q=${"Madrid"}`;
-const key = "6875377ed85f4f30a22121318221607";
 const URL = "http://api.weatherapi.com/v1/current.json?key=";
 
-fetch(URL + key + u)
+fetch(URL + import.meta.env.VITE_WEATHER_API_KEY + u)
   .then((res) => res.json())
   .then((res) => console.log(res));
 
@@ -71,8 +66,7 @@ const ChatbotLayout = () => {
   const [loading, setLoading] = useState(false);
   const [witData, setWitData] = useState("");
 
-  const uri = "https://api.wit.ai/message?v=20220715&q=";
-  const auth = "Bearer 27MH4HGADT6RFFQ6F5KHHRB56R5PMHCH";
+  const uri = "https://api.wit.ai/message?v=20220717&q=";
 
   useEffect(() => {
     chatbotMessage();
@@ -84,7 +78,11 @@ const ChatbotLayout = () => {
   const fetchWitData = () => {
     if (messages.length && messages[messages.length - 1].actor === "user") {
       const q = encodeURIComponent(messages[messages.length - 1].content.text);
-      fetch(uri + q, { headers: { Authorization: auth } })
+      fetch(uri + q, {
+        headers: {
+          Authorization: `Bearer ${import.meta.env.VITE_WIT_API_KEY}`,
+        },
+      })
         .then((res) => res.json())
         .then((res) => setWitData(res));
       // console.log(messages[messages.length - 1].content.text);
@@ -101,6 +99,7 @@ const ChatbotLayout = () => {
               id: prevMessages.length + 100,
               actor: "bot",
               type: "text",
+              time: Date.now(),
               content: {
                 text: "Lorem ipsum",
               },
@@ -121,6 +120,7 @@ const ChatbotLayout = () => {
           id: prevMessages.length + 1,
           actor: "user",
           type: "text",
+          time: Date.now(),
           content: {
             text: message,
           },
@@ -136,6 +136,7 @@ const ChatbotLayout = () => {
         id: prevMessages.length + 200,
         actor: "user",
         type: "text",
+        time: Date.now(),
         content: {
           text: message,
         },
