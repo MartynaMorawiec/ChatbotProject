@@ -16,11 +16,25 @@ const Message = ({ actor, type, content, time }) => {
           </div>
         </section>
       )}
-
       {actor === "bot" && type === "text" && (
         <section className="flex">
           <div className="max-w-[75%] bg-neutral-100 rounded-3xl rounded-tl-lg p-4 text-base sm:text-lg text-neutral-900">
             {content.text}
+            <div className="float-right mt-3 px-4 text-xs text-neutral-500">
+              {moment(time).format("hh:mm")}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {actor === "bot" && type === "weather" && (
+        <section className="flex">
+          <div className="max-w-[75%] bg-neutral-100 rounded-3xl rounded-tl-lg p-4 text-base sm:text-lg text-neutral-900">
+            <img src={content.text?.current?.condition?.icon} />
+            Location: {content.text?.location?.name},
+            {content.text?.location?.country} <br />
+            Temperature: {content.text?.current?.temp_c}°C, <br />
+            Condition: {content.text?.current?.condition?.text}
             <div className="float-right mt-3 px-4 text-xs text-neutral-500">
               {moment(time).format("hh:mm")}
             </div>

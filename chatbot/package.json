@@ -17,7 +17,8 @@
     "react-input-emoji": "^4.1.0",
     "react-router-dom": "^6.3.0",
     "react-speech-recognition": "^3.9.1",
-    "regenerator-runtime": "^0.13.9"
+    "regenerator-runtime": "^0.13.9",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@babel/core": "^7.18.6",
