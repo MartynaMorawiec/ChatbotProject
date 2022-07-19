@@ -56,7 +56,8 @@ const chatMessages = [
 
 const WEATHER_API_URL = "http://api.weatherapi.com/v1/current.json?key=";
 const WIT_AI_URL = "https://api.wit.ai/message?v=20220717&q=";
-const GIPHY_API_URL = `https://api.giphy.com/v1/gifs/search?api_key=`;
+const GIPHY_API_URL = "https://api.giphy.com/v1/gifs/search?api_key=";
+const NEWS_API_URL = "https://gnews.io/api/v4/search?q=example&token=";
 
 const ChatbotLayout = () => {
   const [messages, setMessages] = useState(chatMessages);
@@ -64,6 +65,7 @@ const ChatbotLayout = () => {
   const [witData, setWitData] = useState(null);
   const [weather, setWeather] = useState(null);
   const [gif, setGif] = useState(null);
+  const [news, setNews] = useState(null);
 
   useEffect(() => {
     const fetchWitData = () => {
@@ -99,14 +101,17 @@ const ChatbotLayout = () => {
     }
   }, [messages]);
 
-  console.log(witData);
-
   useEffect(() => {
     if (
       witData?.intents[0]?.name === "wit$get_weather" &&
       witData?.entities?.["wit$location:location"]
     ) {
       fetchWeatherData();
+    } else if (
+      witData?.intents[0]?.name === "get_news" &&
+      witData?.entities?.["news:news"]
+    ) {
+      fetchNewsData();
     } else if (
       witData?.intents[0]?.name === "greeting" &&
       witData?.traits["wit$greetings"]
@@ -145,6 +150,16 @@ const ChatbotLayout = () => {
     }
   }, [gif]);
 
+  useEffect(() => {
+    if (
+      messages.length &&
+      messages[messages.length - 1].actor === "user" &&
+      news
+    ) {
+      chatbotNewsMessage();
+    }
+  }, [news]);
+
   const fetchWeatherData = () => {
     const u = `&q=${witData.entities?.["wit$location:location"][0].body}`;
     fetch(WEATHER_API_URL + import.meta.env.VITE_WEATHER_API_KEY + u)
@@ -163,6 +178,12 @@ const ChatbotLayout = () => {
     console.log(
       "giphy text " + messages[messages.length - 1].content.text.split(" ")[1]
     );
+  };
+
+  const fetchNewsData = () => {
+    fetch(`${NEWS_API_URL}${import.meta.env.VITE_NEWS_API_KEY}`)
+      .then((res) => res.json())
+      .then((res) => setNews(res));
   };
 
   const chatbotWeatherMessage = () => {
@@ -288,6 +309,31 @@ const ChatbotLayout = () => {
               image:
                 gif.data[Math.floor(Math.random() * gif.data.length)].images
                   .fixed_height.url,
+            },
+          },
+        ];
+      });
+      setLoading(false);
+    }, 2000);
+
+    setLoading(true);
+  };
+
+  const chatbotNewsMessage = () => {
+    const article =
+      news.articles[Math.floor(Math.random() * news.articles.length)];
+    setTimeout(() => {
+      setMessages((prevMessages) => {
+        return [
+          ...prevMessages,
+          {
+            id: uuidv4(),
+            actor: "bot",
+            type: "card",
+            content: {
+              text: article.title,
+              image: article.image,
+              link: article.url,
             },
           },
         ];
