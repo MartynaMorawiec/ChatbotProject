@@ -4,7 +4,6 @@ import ChatbotFooter from "./ChatbotFooter";
 import ChatbotHeader from "./ChatbotHeader";
 import MessageDate from "./MessageDate";
 import { v4 as uuidv4 } from "uuid";
-// import moment from "moment";
 
 const chatMessages = [
   {
@@ -55,22 +54,21 @@ const chatMessages = [
   },
 ];
 
-const greetings = ["Hello", "Hi", "Yo", "Hey", "Sup"];
-const goodbye = ["Goodbye", "Bye", "Adios", "Bye bye", "Hasta la vista"];
 const WEATHER_API_URL = "http://api.weatherapi.com/v1/current.json?key=";
-
 const WIT_AI_URL = "https://api.wit.ai/message?v=20220717&q=";
+const GIPHY_API_URL = `https://api.giphy.com/v1/gifs/search?api_key=`;
 
 const ChatbotLayout = () => {
   const [messages, setMessages] = useState(chatMessages);
   const [loading, setLoading] = useState(false);
   const [witData, setWitData] = useState(null);
   const [weather, setWeather] = useState(null);
+  const [gif, setGif] = useState(null);
 
   useEffect(() => {
     const fetchWitData = () => {
       const q = encodeURIComponent(messages[messages.length - 1].content.text);
-      console.log("messages " + messages[messages.length - 1].content.text);
+
       fetch(WIT_AI_URL + q, {
         headers: {
           Authorization: `Bearer ${import.meta.env.VITE_WIT_API_KEY}`,
@@ -79,8 +77,25 @@ const ChatbotLayout = () => {
         .then((res) => res.json())
         .then((res) => setWitData(res));
     };
-    if (messages.length && messages[messages.length - 1].actor === "user") {
+    if (
+      messages.length &&
+      messages[messages.length - 1].actor === "user" &&
+      !(
+        messages[messages.length - 1].content.text.split(" ")[0] === "gif" ||
+        messages[messages.length - 1].content.text.split(" ")[0] === "giphy" ||
+        messages[messages.length - 1].content.text.split(" ")[0] === "meme"
+      )
+    ) {
       fetchWitData();
+    }
+    if (
+      messages.length &&
+      messages[messages.length - 1].actor === "user" &&
+      (messages[messages.length - 1].content.text.split(" ")[0] === "gif" ||
+        messages[messages.length - 1].content.text.split(" ")[0] === "giphy" ||
+        messages[messages.length - 1].content.text.split(" ")[0] === "meme")
+    ) {
+      fetchGiphyData();
     }
   }, [messages]);
 
@@ -88,17 +103,17 @@ const ChatbotLayout = () => {
 
   useEffect(() => {
     if (
-      witData?.intents[0].name === "wit$get_weather" &&
+      witData?.intents[0]?.name === "wit$get_weather" &&
       witData?.entities?.["wit$location:location"]
     ) {
       fetchWeatherData();
     } else if (
-      witData?.intents[0].name === "greeting" &&
+      witData?.intents[0]?.name === "greeting" &&
       witData?.traits["wit$greetings"]
     ) {
       chatbotGreetingMessage();
     } else if (
-      witData?.intents[0].name === "bye" &&
+      witData?.intents[0]?.name === "bye" &&
       witData?.traits["wit$bye"]
     ) {
       chatbotGoodbyeMessage();
@@ -120,20 +135,37 @@ const ChatbotLayout = () => {
     }
   }, [weather]);
 
+  useEffect(() => {
+    if (
+      messages.length &&
+      messages[messages.length - 1].actor === "user" &&
+      gif
+    ) {
+      chatbotGiphyMessage();
+    }
+  }, [gif]);
+
   const fetchWeatherData = () => {
-    console.log(
-      "witdata:",
-      witData?.entities?.["wit$location:location"][0].body
-    );
     const u = `&q=${witData.entities?.["wit$location:location"][0].body}`;
     fetch(WEATHER_API_URL + import.meta.env.VITE_WEATHER_API_KEY + u)
       .then((res) => res.json())
       .then((res) => setWeather(res));
   };
 
+  const fetchGiphyData = () => {
+    fetch(
+      `${GIPHY_API_URL}${import.meta.env.VITE_GIPHY_API_KEY}&q=${
+        messages[messages.length - 1].content.text.split(" ")[1]
+      }&limit=25&offset=0&rating=g&lang=en`
+    )
+      .then((res) => res.json())
+      .then((res) => setGif(res));
+    console.log(
+      "giphy text " + messages[messages.length - 1].content.text.split(" ")[1]
+    );
+  };
+
   const chatbotWeatherMessage = () => {
-    console.log(weather);
-    console.log("weather " + weather?.current?.condition?.text);
     setTimeout(() => {
       setMessages((prevMessages) => {
         return [
@@ -156,8 +188,6 @@ const ChatbotLayout = () => {
   };
 
   const chatbotMessage = () => {
-    console.log(weather);
-    console.log("weather " + weather?.current?.condition?.text);
     setTimeout(() => {
       setMessages((prevMessages) => {
         return [
@@ -168,7 +198,7 @@ const ChatbotLayout = () => {
             type: "text",
             time: Date.now(),
             content: {
-              text: "Please ask the question again",
+              text: "Please ask a question again",
             },
           },
         ];
@@ -180,8 +210,7 @@ const ChatbotLayout = () => {
   };
 
   const chatbotGreetingMessage = () => {
-    console.log(weather);
-    console.log("weather " + weather?.current?.condition?.text);
+    const greetings = ["Hello", "Hi", "Yo", "Hey", "Sup", "What's up"];
     setTimeout(() => {
       setMessages((prevMessages) => {
         return [
@@ -204,8 +233,7 @@ const ChatbotLayout = () => {
   };
 
   const chatbotGoodbyeMessage = () => {
-    console.log(weather);
-    console.log("weather " + weather?.current?.condition?.text);
+    const goodbye = ["Goodbye", "Bye", "Adios", "Bye bye", "Hasta la vista"];
     setTimeout(() => {
       setMessages((prevMessages) => {
         return [
@@ -226,6 +254,31 @@ const ChatbotLayout = () => {
 
     setLoading(true);
   };
+
+  const chatbotGiphyMessage = () => {
+    setTimeout(() => {
+      setMessages((prevMessages) => {
+        return [
+          ...prevMessages,
+          {
+            id: uuidv4(),
+            actor: "bot",
+            type: "image",
+            content: {
+              image:
+                gif.data[Math.floor(Math.random() * gif.data.length)].images
+                  .fixed_height.url,
+            },
+          },
+        ];
+      });
+      setLoading(false);
+    }, 2000);
+
+    setLoading(true);
+  };
+
+  console.log(chatbotGiphyMessage);
 
   const send = (message) => {
     if (message !== "") {
