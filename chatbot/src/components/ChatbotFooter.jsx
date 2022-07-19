@@ -14,6 +14,27 @@ const ChatbotFooter = ({ onSend, onVoice }) => {
   const [showPicker, setShowPicker] = useState(false);
 
   useEffect(() => {
+    const handleListen = () => {
+      if (transcript !== "" && !isListening) {
+        console.log("Result:", transcript);
+        onVoice(transcript);
+      }
+
+      if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
+        console.log(
+          "Your browser does not support speech recognition software! Try Chrome desktop, maybe?"
+        );
+      }
+
+      if (isListening) {
+        SpeechRecognition.startListening({
+          continuous: false,
+          language: "en-US",
+        });
+      } else {
+        SpeechRecognition.stopListening();
+      }
+    };
     handleListen();
   }, [isListening]);
 
@@ -21,28 +42,6 @@ const ChatbotFooter = ({ onSend, onVoice }) => {
     event.preventDefault();
     onSend(text);
     setText("");
-  };
-
-  const handleListen = () => {
-    if (transcript !== "" && !isListening) {
-      console.log("Result:", transcript);
-      onVoice(transcript);
-    }
-
-    if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
-      console.log(
-        "Your browser does not support speech recognition software! Try Chrome desktop, maybe?"
-      );
-    }
-
-    if (isListening) {
-      SpeechRecognition.startListening({
-        continuous: false,
-        language: "en-US",
-      });
-    } else {
-      SpeechRecognition.stopListening();
-    }
   };
 
   const onEmojiClick = (event, emojiObject) => {

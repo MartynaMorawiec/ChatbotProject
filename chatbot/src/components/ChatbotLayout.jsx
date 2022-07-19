@@ -66,13 +66,7 @@ const ChatbotLayout = () => {
   const [weather, setWeather] = useState(null);
 
   useEffect(() => {
-    fetchWitData();
-    fetchWeatherData();
-    chatbotMessage();
-  }, [messages, witData, setWeather]);
-
-  const fetchWitData = () => {
-    if (messages.length && messages[messages.length - 1].actor === "user") {
+    const fetchWitData = () => {
       const q = encodeURIComponent(messages[messages.length - 1].content.text);
       console.log("messages " + messages[messages.length - 1].content.text);
       fetch(URI + q, {
@@ -82,50 +76,66 @@ const ChatbotLayout = () => {
       })
         .then((res) => res.json())
         .then((res) => setWitData(res));
+    };
+    if (messages.length && messages[messages.length - 1].actor === "user") {
+      fetchWitData();
     }
-  };
+    // fetchWeatherData();
+    // chatbotMessage();
+  }, [messages]);
 
-  const fetchWeatherData = () => {
-    if (witData?.entities["wit$location:location"]) {
-      console.log(
-        "witdata:",
-        witData?.entities?.["wit$location:location"][0].body
-      );
-      const u = `&q=${witData.entities?.["wit$location:location"][0].body}`;
-      fetch(URL + import.meta.env.VITE_WEATHER_API_KEY + u)
-        .then((res) => res.json())
-        .then((res) => setWeather(res));
-      console.log(weather);
+  useEffect(() => {
+    if (
+      witData?.intents[0].name === "wit$get_weather" &&
+      witData?.entities?.["wit$location:location"]
+    ) {
+      fetchWeatherData();
     }
-  };
+  }, [witData]);
 
-  const chatbotMessage = () => {
+  useEffect(() => {
     if (
       messages.length &&
       messages[messages.length - 1].actor === "user" &&
       weather
     ) {
-      console.log("weather " + weather?.current?.condition?.text);
-      setTimeout(() => {
-        setMessages((prevMessages) => {
-          return [
-            ...prevMessages,
-            {
-              id: uuidv4(),
-              actor: "bot",
-              type: "weather",
-              time: Date.now(),
-              content: {
-                text: weather,
-              },
-            },
-          ];
-        });
-        setLoading(false);
-      }, 2000);
-
-      setLoading(true);
+      chatbotMessage();
     }
+  }, [weather]);
+
+  const fetchWeatherData = () => {
+    console.log(
+      "witdata:",
+      witData?.entities?.["wit$location:location"][0].body
+    );
+    const u = `&q=${witData.entities?.["wit$location:location"][0].body}`;
+    fetch(URL + import.meta.env.VITE_WEATHER_API_KEY + u)
+      .then((res) => res.json())
+      .then((res) => setWeather(res));
+  };
+
+  const chatbotMessage = () => {
+    console.log(weather);
+    console.log("weather " + weather?.current?.condition?.text);
+    setTimeout(() => {
+      setMessages((prevMessages) => {
+        return [
+          ...prevMessages,
+          {
+            id: uuidv4(),
+            actor: "bot",
+            type: "weather",
+            time: Date.now(),
+            content: {
+              text: weather,
+            },
+          },
+        ];
+      });
+      setLoading(false);
+    }, 2000);
+
+    setLoading(true);
   };
 
   const send = (message) => {
