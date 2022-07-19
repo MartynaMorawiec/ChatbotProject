@@ -156,7 +156,7 @@ const ChatbotLayout = () => {
     fetch(
       `${GIPHY_API_URL}${import.meta.env.VITE_GIPHY_API_KEY}&q=${
         messages[messages.length - 1].content.text.split(" ")[1]
-      }&limit=25&offset=0&rating=g&lang=en`
+      }`
     )
       .then((res) => res.json())
       .then((res) => setGif(res));
@@ -188,6 +188,13 @@ const ChatbotLayout = () => {
   };
 
   const chatbotMessage = () => {
+    const answer = [
+      "Please ask a question again. 🙂",
+      "Sorry, I dont't understand that. 🤭",
+      "What did you say? 🤔",
+      "Sorry, I dont't understand what you mean. 🙄",
+      "Sorry, I don't get it. 🤨  Try again. 😉",
+    ];
     setTimeout(() => {
       setMessages((prevMessages) => {
         return [
@@ -198,7 +205,7 @@ const ChatbotLayout = () => {
             type: "text",
             time: Date.now(),
             content: {
-              text: "Please ask a question again",
+              text: answer[Math.floor(Math.random() * answer.length)],
             },
           },
         ];
@@ -210,7 +217,14 @@ const ChatbotLayout = () => {
   };
 
   const chatbotGreetingMessage = () => {
-    const greetings = ["Hello", "Hi", "Yo", "Hey", "Sup", "What's up"];
+    const greetings = [
+      "Hello 👋 ",
+      "Hi 🙂",
+      "Yo 🤘",
+      "Hey 😃",
+      "Sup 😄",
+      "What's up? 😉",
+    ];
     setTimeout(() => {
       setMessages((prevMessages) => {
         return [
@@ -233,7 +247,13 @@ const ChatbotLayout = () => {
   };
 
   const chatbotGoodbyeMessage = () => {
-    const goodbye = ["Goodbye", "Bye", "Adios", "Bye bye", "Hasta la vista"];
+    const goodbye = [
+      "Goodbye 👋",
+      "Bye ✋",
+      "Adios 💋",
+      "Bye bye 👋 ",
+      "Hasta la vista 👀",
+    ];
     setTimeout(() => {
       setMessages((prevMessages) => {
         return [
@@ -277,8 +297,6 @@ const ChatbotLayout = () => {
 
     setLoading(true);
   };
-
-  console.log(chatbotGiphyMessage);
 
   const send = (message) => {
     if (message !== "") {

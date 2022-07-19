@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
-// import InputEmoji from "react-input-emoji";
 import Picker from "emoji-picker-react";
 
 const ChatbotFooter = ({ onSend, onVoice }) => {
