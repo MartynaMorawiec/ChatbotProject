@@ -55,9 +55,11 @@ const chatMessages = [
   },
 ];
 
-const URL = "http://api.weatherapi.com/v1/current.json?key=";
+const greetings = ["Hello", "Hi", "Yo", "Hey", "Sup"];
+const goodbye = ["Goodbye", "Bye", "Adios", "Bye bye", "Hasta la vista"];
+const WEATHER_API_URL = "http://api.weatherapi.com/v1/current.json?key=";
 
-const URI = "https://api.wit.ai/message?v=20220717&q=";
+const WIT_AI_URL = "https://api.wit.ai/message?v=20220717&q=";
 
 const ChatbotLayout = () => {
   const [messages, setMessages] = useState(chatMessages);
@@ -69,7 +71,7 @@ const ChatbotLayout = () => {
     const fetchWitData = () => {
       const q = encodeURIComponent(messages[messages.length - 1].content.text);
       console.log("messages " + messages[messages.length - 1].content.text);
-      fetch(URI + q, {
+      fetch(WIT_AI_URL + q, {
         headers: {
           Authorization: `Bearer ${import.meta.env.VITE_WIT_API_KEY}`,
         },
@@ -80,9 +82,9 @@ const ChatbotLayout = () => {
     if (messages.length && messages[messages.length - 1].actor === "user") {
       fetchWitData();
     }
-    // fetchWeatherData();
-    // chatbotMessage();
   }, [messages]);
+
+  console.log(witData);
 
   useEffect(() => {
     if (
@@ -90,6 +92,21 @@ const ChatbotLayout = () => {
       witData?.entities?.["wit$location:location"]
     ) {
       fetchWeatherData();
+    } else if (
+      witData?.intents[0].name === "greeting" &&
+      witData?.traits["wit$greetings"]
+    ) {
+      chatbotGreetingMessage();
+    } else if (
+      witData?.intents[0].name === "bye" &&
+      witData?.traits["wit$bye"]
+    ) {
+      chatbotGoodbyeMessage();
+    } else if (
+      messages.length &&
+      messages[messages.length - 1].actor === "user"
+    ) {
+      chatbotMessage();
     }
   }, [witData]);
 
@@ -99,7 +116,7 @@ const ChatbotLayout = () => {
       messages[messages.length - 1].actor === "user" &&
       weather
     ) {
-      chatbotMessage();
+      chatbotWeatherMessage();
     }
   }, [weather]);
 
@@ -109,12 +126,12 @@ const ChatbotLayout = () => {
       witData?.entities?.["wit$location:location"][0].body
     );
     const u = `&q=${witData.entities?.["wit$location:location"][0].body}`;
-    fetch(URL + import.meta.env.VITE_WEATHER_API_KEY + u)
+    fetch(WEATHER_API_URL + import.meta.env.VITE_WEATHER_API_KEY + u)
       .then((res) => res.json())
       .then((res) => setWeather(res));
   };
 
-  const chatbotMessage = () => {
+  const chatbotWeatherMessage = () => {
     console.log(weather);
     console.log("weather " + weather?.current?.condition?.text);
     setTimeout(() => {
@@ -128,6 +145,78 @@ const ChatbotLayout = () => {
             time: Date.now(),
             content: {
               text: weather,
+            },
+          },
+        ];
+      });
+      setLoading(false);
+    }, 2000);
+
+    setLoading(true);
+  };
+
+  const chatbotMessage = () => {
+    console.log(weather);
+    console.log("weather " + weather?.current?.condition?.text);
+    setTimeout(() => {
+      setMessages((prevMessages) => {
+        return [
+          ...prevMessages,
+          {
+            id: uuidv4(),
+            actor: "bot",
+            type: "text",
+            time: Date.now(),
+            content: {
+              text: "Please ask the question again",
+            },
+          },
+        ];
+      });
+      setLoading(false);
+    }, 2000);
+
+    setLoading(true);
+  };
+
+  const chatbotGreetingMessage = () => {
+    console.log(weather);
+    console.log("weather " + weather?.current?.condition?.text);
+    setTimeout(() => {
+      setMessages((prevMessages) => {
+        return [
+          ...prevMessages,
+          {
+            id: uuidv4(),
+            actor: "bot",
+            type: "text",
+            time: Date.now(),
+            content: {
+              text: greetings[Math.floor(Math.random() * greetings.length)],
+            },
+          },
+        ];
+      });
+      setLoading(false);
+    }, 2000);
+
+    setLoading(true);
+  };
+
+  const chatbotGoodbyeMessage = () => {
+    console.log(weather);
+    console.log("weather " + weather?.current?.condition?.text);
+    setTimeout(() => {
+      setMessages((prevMessages) => {
+        return [
+          ...prevMessages,
+          {
+            id: uuidv4(),
+            actor: "bot",
+            type: "text",
+            time: Date.now(),
+            content: {
+              text: goodbye[Math.floor(Math.random() * goodbye.length)],
             },
           },
         ];
