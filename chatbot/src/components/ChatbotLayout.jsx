@@ -326,10 +326,8 @@ const fetchWitData = (query) => {
 };
 
 const checkIsGifMessage = (messages) => {
-  return (
-    messages[messages.length - 1].content.text.split(" ")[0] === "gif" ||
-    messages[messages.length - 1].content.text.split(" ")[0] === "giphy" ||
-    messages[messages.length - 1].content.text.split(" ")[0] === "meme"
+  return ["gif", "giphy", "meme"].includes(
+    messages[messages.length - 1].content.text.split(" ")[0]
   );
 };
 
