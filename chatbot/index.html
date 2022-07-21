@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/src/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="./src/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script
@@ -24,25 +24,6 @@
             boxShadow: {
               blue: '0 20px 85px -5px rgba(0, 0, 0, 0.1), 0 10px 15px -4px rgba(60, 124, 254, 0.8)',
             },
-            dropShadow: {
-              'xlBlue': '(0 30px 33px rgba(60, 124, 254, 0.8))',
-            },
-
-            keyframes: {
-              wave: {
-                '0%': { transform: 'rotate(0.0deg)' },
-                '10%': { transform: 'rotate(14deg)' },
-                '20%': { transform: 'rotate(-8deg)' },
-                '30%': { transform: 'rotate(14deg)' },
-                '40%': { transform: 'rotate(-4deg)' },
-                '50%': { transform: 'rotate(10.0deg)' },
-                '60%': { transform: 'rotate(0.0deg)' },
-                '100%': { transform: 'rotate(0.0deg)' },
-              },
-            },
-            animation: {
-              'waving-hand': 'wave 2s linear infinite',
-            },
           }
         }
       }
@@ -56,10 +37,10 @@
   </head>
   <body>
     <div id="root"></div>
+
     <script>
       window.global = window;
     </script>
-   
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

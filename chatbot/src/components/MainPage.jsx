@@ -13,7 +13,6 @@ const MainPage = () => {
         </header>
         <main className="relative h-[300px]">
           <div className="absolute top-[100px] z-10 flex justify-center items-center w-full h-[5vh] text-5xl">
-            {/* <p className="animate-waving-hand pl-8 pr-6 text-5xl text-center"></p> */}
             <h1 className="text-primary text-center font-bold">
               Welcome to Chatbot!
             </h1>
