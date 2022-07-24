@@ -9,32 +9,8 @@ import {
   WIT_AI_URL,
   GIPHY_API_URL,
   NEWS_API_URL,
+  YOUTUBE_API_URL,
 } from "../api/constantsAPI";
-
-const answer = [
-  "Please ask a question again. 🙂",
-  "Sorry, I dont't understand that. 🤭",
-  "What did you say? 🤔",
-  "Sorry, I dont't understand what you mean. 🙄",
-  "Sorry, I don't get it. 🤨 Try again. 😉",
-];
-
-const greetings = [
-  "Hello 👋 ",
-  "Hi 🙂",
-  "Yo 🤘",
-  "Hey 😃",
-  "Sup 😄",
-  "What's up? 😉",
-];
-
-const goodbye = [
-  "Goodbye 👋",
-  "Bye ✋",
-  "Adios 💋",
-  "Bye bye 👋 ",
-  "Hasta la vista 👀",
-];
 
 const ChatbotLayout = () => {
   const [messages, setMessages] = useState([]);
@@ -43,6 +19,7 @@ const ChatbotLayout = () => {
   const [weather, setWeather] = useState(null);
   const [gif, setGif] = useState(null);
   const [news, setNews] = useState(null);
+  const [youtube, setYoutube] = useState(null);
 
   useEffect(() => {
     setTimeout(() => {
@@ -54,7 +31,8 @@ const ChatbotLayout = () => {
           time: Date.now(),
           content: {
             text: `Hello 👋 , welcome to chatbot. 
-            You can ask me about current weather 🌤, latest news 📰  
+            You can ask me about current weather in any city 🌤, 
+            latest news 📰 , YouTube videos 🎥
             or I can simply send you a GIF message 😉.`,
           },
         },
@@ -66,15 +44,14 @@ const ChatbotLayout = () => {
   }, []);
 
   useEffect(() => {
-    if (checkIsMessageFromUser(messages) && !checkIsGifMessage(messages)) {
-      fetchWitData(messages[messages.length - 1].content.text).then((res) =>
-        setWitData(res)
-      );
-    } else if (
-      checkIsMessageFromUser(messages) &&
-      checkIsGifMessage(messages)
-    ) {
-      fetchGiphyData();
+    if (checkIsMessageFromUser(messages)) {
+      if (checkIsGifMessage(messages)) return fetchGiphyData();
+      if (checkIsYoutubeMessage(messages)) return fetchYoutubeData();
+      if (!checkIsGifMessage(messages) && !checkIsYoutubeMessage(messages)) {
+        fetchWitData(messages[messages.length - 1].content.text).then((res) =>
+          setWitData(res)
+        );
+      }
     }
   }, [messages]);
 
@@ -84,11 +61,11 @@ const ChatbotLayout = () => {
     } else if (checkWitEntities(witData, "get_news", "news:news")) {
       fetchNewsData();
     } else if (checkWitTraits(witData, "greeting", "wit$greetings")) {
-      chatbotGreetingMessage();
+      chatbotMessage(randomResponse(greetings));
     } else if (checkWitTraits(witData, "bye", "wit$bye")) {
-      chatbotGoodbyeMessage();
+      chatbotMessage(randomResponse(goodbye));
     } else if (checkIsMessageFromUser(messages)) {
-      chatbotMessage();
+      chatbotMessage(randomResponse(unclearQuestion));
     }
   }, [witData]);
 
@@ -99,8 +76,9 @@ const ChatbotLayout = () => {
   }, [weather]);
 
   useEffect(() => {
-    if (checkIsMessageFromUser(messages) && gif) {
-      chatbotGiphyMessage();
+    if (checkIsMessageFromUser(messages)) {
+      if (gif?.data?.length) return chatbotGiphyMessage();
+      return chatbotMessage("🔍 I can't find such a GIF 🎞. Try again 😉");
     }
   }, [gif]);
 
@@ -110,27 +88,69 @@ const ChatbotLayout = () => {
     }
   }, [news]);
 
+  useEffect(() => {
+    if (checkIsMessageFromUser(messages) && youtube) {
+      chatbotYoutubeMessage();
+    }
+  }, [youtube]);
+
   const fetchWeatherData = () => {
     const u = `&q=${witData.entities?.["wit$location:location"][0].body}`;
     fetch(WEATHER_API_URL + import.meta.env.VITE_WEATHER_API_KEY + u)
-      .then((res) => res.json())
-      .then((res) => setWeather(res));
+      .then((res) => {
+        if (res.status === 400) {
+          chatbotMessage("🔍 I can't find this city 🌆. Try again. 🙂");
+          return;
+        }
+        return res.json();
+      })
+      .then((res) => setWeather(res))
+      .catch(() => {});
   };
 
   const fetchGiphyData = () => {
     fetch(
-      `${GIPHY_API_URL}${import.meta.env.VITE_GIPHY_API_KEY}&q=${
-        messages[messages.length - 1].content.text.split(" ")[1]
+      `${GIPHY_API_URL}${
+        import.meta.env.VITE_GIPHY_API_KEY
+      }&q=${getMessageQuery(messages)}
       }`
     )
-      .then((res) => res.json())
+      .then((res) => {
+        if (res.status === 400) {
+          chatbotMessage("🔍 I can't find any GIF 🎞. Try again. 😉");
+          return;
+        }
+        return res.json();
+      })
       .then((res) => setGif(res));
   };
 
   const fetchNewsData = () => {
     fetch(`${NEWS_API_URL}${import.meta.env.VITE_NEWS_API_KEY}`)
-      .then((res) => res.json())
+      .then((res) => {
+        if (res.status === 400) {
+          chatbotMessage("🔍 I can't find any news 🗞️ . Try again. 😉");
+          return;
+        }
+        return res.json();
+      })
       .then((res) => setNews(res));
+  };
+
+  const fetchYoutubeData = () => {
+    fetch(
+      `${YOUTUBE_API_URL}${
+        import.meta.env.VITE_YOUTUBE_API_KEY
+      }&part=snippet&q=${getMessageQuery(messages)}`
+    )
+      .then((res) => {
+        if (res.status === 400) {
+          chatbotMessage("🔍 I can't find any YouTube movie 🎦. Try again. 😉");
+          return;
+        }
+        return res.json();
+      })
+      .then((res) => setYoutube(res));
   };
 
   const chatbotWeatherMessage = () => {
@@ -155,7 +175,7 @@ const ChatbotLayout = () => {
     setLoading(true);
   };
 
-  const chatbotMessage = () => {
+  const chatbotMessage = (message) => {
     setTimeout(() => {
       setMessages((prevMessages) => {
         return [
@@ -166,51 +186,7 @@ const ChatbotLayout = () => {
             type: "text",
             time: Date.now(),
             content: {
-              text: answer[Math.floor(Math.random() * answer.length)],
-            },
-          },
-        ];
-      });
-      setLoading(false);
-    }, 2000);
-
-    setLoading(true);
-  };
-
-  const chatbotGreetingMessage = () => {
-    setTimeout(() => {
-      setMessages((prevMessages) => {
-        return [
-          ...prevMessages,
-          {
-            id: uuidv4(),
-            actor: "bot",
-            type: "text",
-            time: Date.now(),
-            content: {
-              text: greetings[Math.floor(Math.random() * greetings.length)],
-            },
-          },
-        ];
-      });
-      setLoading(false);
-    }, 2000);
-
-    setLoading(true);
-  };
-
-  const chatbotGoodbyeMessage = () => {
-    setTimeout(() => {
-      setMessages((prevMessages) => {
-        return [
-          ...prevMessages,
-          {
-            id: uuidv4(),
-            actor: "bot",
-            type: "text",
-            time: Date.now(),
-            content: {
-              text: goodbye[Math.floor(Math.random() * goodbye.length)],
+              text: message,
             },
           },
         ];
@@ -231,9 +207,7 @@ const ChatbotLayout = () => {
             actor: "bot",
             type: "image",
             content: {
-              image:
-                gif?.data?.[Math.floor(Math.random() * gif?.data?.length)]
-                  ?.images?.fixed_height?.url,
+              image: randomResponse(gif?.data)?.images?.fixed_height?.url,
             },
           },
         ];
@@ -244,9 +218,30 @@ const ChatbotLayout = () => {
     setLoading(true);
   };
 
+  const chatbotYoutubeMessage = () => {
+    setTimeout(() => {
+      setMessages((prevMessages) => {
+        return [
+          ...prevMessages,
+          {
+            id: uuidv4(),
+            actor: "bot",
+            type: "youtube",
+            content: {
+              video: `https://www.youtube.com/embed/${
+                randomResponse(youtube?.items)?.id?.videoId
+              }`,
+            },
+          },
+        ];
+      });
+      setLoading(false);
+    }, 2000);
+
+    setLoading(true);
+  };
   const chatbotNewsMessage = () => {
-    const article =
-      news?.articles?.[Math.floor(Math.random() * news?.articles?.length)];
+    const article = randomResponse(news?.articles);
     setTimeout(() => {
       setMessages((prevMessages) => {
         return [
@@ -306,9 +301,7 @@ const ChatbotLayout = () => {
       <div className="relative max-w-3xl w-[768px] h-screen bg-white font-urbanist font-medium tracking-wider overflow-hidden shadow-lg">
         <ChatbotHeader />
         <MessageDate />
-
         <ChatbotContent messages={messages} loading={loading} />
-
         <ChatbotFooter onSend={send} onVoice={voice} />
       </div>
     </div>
@@ -324,28 +317,60 @@ const fetchWitData = (query) => {
     },
   }).then((res) => res.json());
 };
-
 const checkIsGifMessage = (messages) => {
   return ["gif", "giphy", "meme"].includes(
     messages[messages.length - 1].content.text.split(" ")[0]
   );
 };
-
+const checkIsYoutubeMessage = (messages) => {
+  return ["youtube", "video"].includes(
+    messages[messages.length - 1].content.text.split(" ")[0]
+  );
+};
 const checkIsMessageFromUser = (messages) => {
   return messages?.length && messages?.[messages.length - 1]?.actor === "user";
 };
-
 const checkWitEntities = (witData, intentsName, entitiesName) => {
   return (
     witData?.intents[0]?.name === intentsName &&
     witData?.entities?.[entitiesName]
   );
 };
-
 const checkWitTraits = (witData, intentsName, traitsName) => {
   return (
     witData?.intents[0]?.name === intentsName && witData?.traits?.[traitsName]
   );
 };
+const getMessageQuery = (messages) => {
+  return messages[messages.length - 1].content.text
+    .split(" ")
+    .slice(1)
+    .join(" ");
+};
+const randomResponse = (response) =>
+  response[Math.floor(Math.random() * response.length)];
+
+const unclearQuestion = [
+  "Please ask a question again. 🙂",
+  "Sorry, I dont't understand that. 🤭",
+  "What did you say? 🤔",
+  "Sorry, I dont't understand what you mean. 🙄",
+  "Sorry, I don't get it. 🤨 Try again. 😉",
+];
+const greetings = [
+  "Hello 👋 ",
+  "Hi 🙂",
+  "Yo 🤘",
+  "Hey 😃",
+  "Sup 😄",
+  "What's up? 😉",
+];
+const goodbye = [
+  "Goodbye 👋",
+  "Bye ✋",
+  "Adios 💋",
+  "Bye bye 👋 ",
+  "Hasta la vista 👀",
+];
 
 export default ChatbotLayout;

@@ -31,7 +31,6 @@ const Message = ({ actor, type, content, time }) => {
         <section className="flex">
           <div className="max-w-[75%] bg-neutral-100 rounded-3xl rounded-tl-lg p-4 text-base sm:text-lg text-neutral-900">
             <img src={content.text?.current?.condition?.icon} />
-
             <p>
               Weather in {content.text?.location?.name},{" "}
               {content.text?.location?.country}
@@ -64,6 +63,12 @@ const Message = ({ actor, type, content, time }) => {
       {actor === "bot" && type === "image" && (
         <section className="flex flex-col max-w-[50%] rounded-2xl overflow-hidden">
           <img src={content.image} />
+        </section>
+      )}
+
+      {actor === "bot" && type === "youtube" && (
+        <section className="flex flex-col max-w-[45%] rounded-2xl overflow-hidden">
+          <iframe title="video-player" src={content.video} />
         </section>
       )}
 
