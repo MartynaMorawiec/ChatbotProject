@@ -23,20 +23,7 @@ const ChatbotLayout = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      setMessages([
-        {
-          id: uuidv4(),
-          actor: "bot",
-          type: "text",
-          time: Date.now(),
-          content: {
-            text: `Hello 👋 , welcome to chatbot. 
-            You can ask me about current weather in any city 🌤, 
-            latest news 📰 , YouTube videos 🎥
-            or I can simply send you a GIF message 😉.`,
-          },
-        },
-      ]);
+      setMessages([welcomeMessage]);
       setLoading(false);
     }, 2000);
 
@@ -78,7 +65,7 @@ const ChatbotLayout = () => {
   useEffect(() => {
     if (checkIsMessageFromUser(messages)) {
       if (gif?.data?.length) return chatbotGiphyMessage();
-      return chatbotMessage("🔍 I can't find such a GIF 🎞. Try again 😉");
+      return chatbotMessage(responseNotFound.giphy);
     }
   }, [gif]);
 
@@ -95,11 +82,11 @@ const ChatbotLayout = () => {
   }, [youtube]);
 
   const fetchWeatherData = () => {
-    const u = `&q=${witData.entities?.["wit$location:location"][0].body}`;
-    fetch(WEATHER_API_URL + import.meta.env.VITE_WEATHER_API_KEY + u)
+    const query = `&q=${witData?.entities?.["wit$location:location"]?.[0]?.body}`;
+    fetch(`${WEATHER_API_URL}${import.meta.env.VITE_WEATHER_API_KEY}${query}`)
       .then((res) => {
         if (res.status === 400) {
-          chatbotMessage("🔍 I can't find this city 🌆. Try again. 🙂");
+          chatbotMessage(responseNotFound.city);
           return;
         }
         return res.json();
@@ -117,7 +104,7 @@ const ChatbotLayout = () => {
     )
       .then((res) => {
         if (res.status === 400) {
-          chatbotMessage("🔍 I can't find any GIF 🎞. Try again. 😉");
+          chatbotMessage(responseNotFound.giphy);
           return;
         }
         return res.json();
@@ -129,7 +116,7 @@ const ChatbotLayout = () => {
     fetch(`${NEWS_API_URL}${import.meta.env.VITE_NEWS_API_KEY}`)
       .then((res) => {
         if (res.status === 400) {
-          chatbotMessage("🔍 I can't find any news 🗞️ . Try again. 😉");
+          chatbotMessage(responseNotFound.news);
           return;
         }
         return res.json();
@@ -145,7 +132,7 @@ const ChatbotLayout = () => {
     )
       .then((res) => {
         if (res.status === 400) {
-          chatbotMessage("🔍 I can't find any YouTube movie 🎦. Try again. 😉");
+          chatbotMessage(responseNotFound.movie);
           return;
         }
         return res.json();
@@ -372,5 +359,23 @@ const goodbye = [
   "Bye bye 👋 ",
   "Hasta la vista 👀",
 ];
+const welcomeMessage = {
+  id: uuidv4(),
+  actor: "bot",
+  type: "text",
+  time: Date.now(),
+  content: {
+    text: `Hello 👋 , welcome to chatbot. 
+    You can ask me about current weather in any city 🌤, 
+    latest news 📰 , YouTube videos 🎥
+    or I can simply send you a GIF message 😉.`,
+  },
+};
+const responseNotFound = {
+  giphy: "🔍 I can't find this GIF 🎞. Try again 😉",
+  city: "🔍 I can't find this city 🌆. Ask again. 🙂",
+  news: "🔍 I can't find any news 🗞️ . Try again. 😉",
+  movie: "🔍 I can't find a YouTube movie 🎦. Try again. 😉",
+};
 
 export default ChatbotLayout;
