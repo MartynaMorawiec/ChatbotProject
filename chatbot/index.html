@@ -6,43 +6,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script
-    src="https://kit.fontawesome.com/482efb0230.js"
-    crossorigin="anonymous"
+      src="https://kit.fontawesome.com/482efb0230.js"
+      crossorigin="anonymous"
     ></script>
     <script>
       tailwind.config = {
         theme: {
           extend: {
             colors: {
-              primary: '#246BFD',
-              secondary: '#3C7CFE',
-              focus: '#EEF4FF',
+              primary: "#246BFD",
+              secondary: "#3C7CFE",
+              focus: "#EEF4FF",
             },
             fontFamily: {
-              'urbanist': ['"Urbanist"', 'sans-serif']
+              urbanist: ['"Urbanist"', "sans-serif"],
             },
             boxShadow: {
-              blue: '0 20px 85px -5px rgba(0, 0, 0, 0.1), 0 10px 15px -4px rgba(60, 124, 254, 0.8)',
+              blue: "0 20px 85px -5px rgba(0, 0, 0, 0.1), 0 10px 15px -4px rgba(60, 124, 254, 0.8)",
             },
-          }
-        }
-      }
+          },
+        },
+      };
     </script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700&display=swap" rel="stylesheet">
-   
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
     <title>Chatbot</title>
   </head>
   <body>
     <div id="root"></div>
-    
 
     <script>
       window.global = window;
     </script>
-   
+
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
