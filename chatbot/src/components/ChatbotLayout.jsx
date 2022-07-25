@@ -149,9 +149,9 @@ const ChatbotLayout = () => {
             id: uuidv4(),
             actor: "bot",
             type: "weather",
-            time: Date.now(),
             content: {
               text: weather,
+              time: Date.now(),
             },
           },
         ];
@@ -171,9 +171,9 @@ const ChatbotLayout = () => {
             id: uuidv4(),
             actor: "bot",
             type: "text",
-            time: Date.now(),
             content: {
               text: message,
+              time: Date.now(),
             },
           },
         ];
@@ -259,9 +259,9 @@ const ChatbotLayout = () => {
           id: uuidv4(),
           actor: "user",
           type: "text",
-          time: Date.now(),
           content: {
             text: message,
+            time: Date.now(),
           },
         },
       ]);
@@ -275,9 +275,9 @@ const ChatbotLayout = () => {
         id: uuidv4(),
         actor: "user",
         type: "text",
-        time: Date.now(),
         content: {
           text: message,
+          time: Date.now(),
         },
       },
     ]);
@@ -363,12 +363,13 @@ const welcomeMessage = {
   id: uuidv4(),
   actor: "bot",
   type: "text",
-  time: Date.now(),
+
   content: {
     text: `Hello 👋 , welcome to chatbot. 
     You can ask me about current weather in any city 🌤, 
     latest news 📰 , YouTube videos 🎥
     or I can simply send you a GIF message 😉.`,
+    time: Date.now(),
   },
 };
 const responseNotFound = {

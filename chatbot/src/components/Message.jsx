@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
 
-const Message = ({ actor, type, content, time }) => {
+const Message = ({ actor, type, content }) => {
   return (
     <div className="h-[70%] space-y-6 px-8">
       {actor === "user" && type === "text" && (
@@ -10,7 +10,7 @@ const Message = ({ actor, type, content, time }) => {
           <div className="max-w-[75%] bg-primary rounded-3xl rounded-br-md p-4 text-white text-base sm:text-lg font-normal">
             {content.text}
             <div className="float-right mt-3 text-xs px-4 text-neutral-200">
-              {moment(time).format("hh:mm")}
+              {moment(content.time).format("hh:mm")}
             </div>
           </div>
         </section>
@@ -21,7 +21,7 @@ const Message = ({ actor, type, content, time }) => {
           <div className="max-w-[75%] bg-neutral-100 rounded-3xl rounded-tl-lg p-4 text-base sm:text-lg text-neutral-900">
             {content.text}
             <div className="float-right mt-3 px-4 text-xs text-neutral-500">
-              {moment(time).format("hh:mm")}
+              {moment(content.time).format("hh:mm")}
             </div>
           </div>
         </section>
@@ -40,7 +40,7 @@ const Message = ({ actor, type, content, time }) => {
               {content.text?.current?.temp_c}°C
             </p>
             <div className="float-right mt-3 px-4 text-xs text-neutral-500">
-              {moment(time).format("hh:mm")}
+              {moment(content.time).format("hh:mm")}
             </div>
           </div>
         </section>
