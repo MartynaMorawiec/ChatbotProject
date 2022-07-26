@@ -5,13 +5,12 @@
 
   <img src="./chatbot/src/assets/botSmile.png" alt="logo" width="200" height="auto" />
   <h1>Chatbot app</h1>
+  
 <div/>
   
   <p>
     Ask chatbot about current weather in any city 🌤, latest news 📰 , YouTube videos 🎥 or a GIF message 😉. You can send a message to chatbot by using text input field or you can use a microphone button and leave a message using your voice 🎙.
   </p>
-
-  
 
 <br />
 
@@ -47,7 +46,7 @@
 ### :camera: Screenshots
 
 <div align="center"> 
-  <img src="./chatbot/src/assets/welcomePage.png" alt="screenshot" />
+  <img src="./chatbot/src/assets/welcomePage.png" alt="screenshot" width="300px"/>
   <img src="./chatbot/src/assets/emoji.png" alt="screenshot" />
   <img src="./chatbot/src/assets/messagesExample.png" alt="screenshot" />
   <img src="./chatbot/src/assets/messages.png" alt="screenshot" />
