@@ -1,4 +1,5 @@
-import { WIT_AI_URL } from "./constantsAPI";
+import { WIT_AI_URL } from "./constantsURL";
+
 export const fetchData = (
   fullUrl,
   chatbotMessage,

@@ -8,8 +8,8 @@ import {
   GIPHY_API_URL,
   NEWS_API_URL,
   YOUTUBE_API_URL,
-} from "../api/constantsAPI";
-import { fetchData, fetchWitData } from "../api/getData";
+} from "../app/constantsURL";
+import { fetchData, fetchWitData } from "../app/getData";
 import {
   checkIsGifMessage,
   checkIsYoutubeMessage,
@@ -20,14 +20,14 @@ import {
   randomResponse,
   chatbotResponse,
   userMessage,
-} from "../api/chatbotLayoutFunc";
+} from "../app/chatbotLayoutFunc";
 import {
   unclearQuestion,
   greetings,
   goodbye,
   welcomeMessage,
   responseNotFound,
-} from "../api/chatbotLayoutConst";
+} from "../app/chatbotLayoutConst";
 
 const ChatbotLayout = () => {
   const [messages, setMessages] = useState([]);
