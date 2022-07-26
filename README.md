@@ -2,10 +2,8 @@
 
 
 <div align="center">
-
   <img src="./chatbot/src/assets/botSmile.png" alt="logo" width="200" height="auto" />
   <h1>Chatbot app</h1>
-  
 <div/>
   
   <p>
@@ -46,10 +44,10 @@
 ### :camera: Screenshots
 
 <div align="center"> 
-  <img src="./chatbot/src/assets/welcomePage.png" alt="screenshot" width="300px"/>
+  <img src="./chatbot/src/assets/welcomePage.png" alt="screenshot" width="500px"/>
   <img src="./chatbot/src/assets/emoji.png" alt="screenshot" />
-  <img src="./chatbot/src/assets/messagesExample.png" alt="screenshot" />
   <img src="./chatbot/src/assets/messages.png" alt="screenshot" />
+  <img src="./chatbot/src/assets/messagesExample.png" alt="screenshot" />
 </div>
 
 
