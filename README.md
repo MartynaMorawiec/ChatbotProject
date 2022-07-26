@@ -1,14 +1,16 @@
 # ChatbotProject
-Chatbot project
+
 
 <div align="center">
 
   <img src="./chatbot/src/assets/botSmile.png" alt="logo" width="200" height="auto" />
   <h1>Chatbot app</h1>
+<div/>
   
   <p>
     Ask chatbot about current weather in any city 🌤, latest news 📰 , YouTube videos 🎥 or a GIF message 😉. You can send a message to chatbot by using text input field or you can use a microphone button and leave a message using your voice 🎙.
   </p>
+
   
 
 <br />
@@ -47,7 +49,7 @@ Chatbot project
 <div align="center"> 
   <img src="./chatbot/src/assets/welcomePage.png" alt="screenshot" />
   <img src="./chatbot/src/assets/emoji.png" alt="screenshot" />
-  <img src="./chatbot/src/assets/messageExample.png" alt="screenshot" />
+  <img src="./chatbot/src/assets/messagesExample.png" alt="screenshot" />
   <img src="./chatbot/src/assets/messages.png" alt="screenshot" />
 </div>
 
@@ -91,9 +93,9 @@ Chatbot project
 
 | Color             | Hex                                                                |
 | ----------------- | ------------------------------------------------------------------ |
-| Primary Color | ![#246BFD](https://via.placeholder.com/10/222831?text=+) #246BFD |
-| Secondary Color | ![#3C7CFE](https://via.placeholder.com/10/393E46?text=+) #3C7CFE |
-| Accent Color | ![#F5F5F5](https://via.placeholder.com/10/00ADB5?text=+) #F5F5F5 |
+| Primary Color | ![#246BFD] #246BFD |
+| Secondary Color | ![#3C7CFE] #3C7CFE |
+| Accent Color | ![#F5F5F5] #F5F5F5 |
 
 
 <!-- Env Variables -->
