@@ -60,6 +60,7 @@ const ChatbotFooter = ({ onSend, onVoice }) => {
           name="text"
           value={text}
           onChange={(event) => setText(event.target.value)}
+          data-testid="messageinput"
         />
         {showPicker ? (
           <>
@@ -67,6 +68,7 @@ const ChatbotFooter = ({ onSend, onVoice }) => {
               className="w-[22px] absolute top-[28%] left-[3%]"
               src="../src/assets/happy.png"
               onClick={() => setShowPicker((val) => !val)}
+              data-testid="emojiopend"
             />
             <Picker
               pickerStyle={{
@@ -83,10 +85,14 @@ const ChatbotFooter = ({ onSend, onVoice }) => {
             className="w-[21px] absolute top-[28%] left-[3%]"
             src="../src/assets/smileBlack.png"
             onClick={() => setShowPicker((val) => !val)}
+            data-testid="emojiclosed"
           />
         )}
 
-        <button className="text-xl font-bold">
+        <button
+          className="text-xl font-bold outline-0"
+          data-testid="sendbutton"
+        >
           <i className="fa-solid fa-paper-plane mr-3 ml-2 mb-2 text-[2rem] sm:text-[2.5rem] text-secondary hover:text-primary rotate-[40deg]"></i>
         </button>
       </form>
@@ -95,9 +101,10 @@ const ChatbotFooter = ({ onSend, onVoice }) => {
         onClick={() => setIsListening((prevState) => !prevState)}
         className={
           isListening
-            ? "flex justify-center items-center w-[3.5em] h-[3.5em] sm:w-[4em] sm:h-[4em] ml-2 mr-2 mb-7 mt-[1em] bg-secondary hover:bg-primary text-white text-sm rounded-full shadow-blue animate-pulse"
-            : "flex justify-center items-center w-[3.5em] h-[3.5em] sm:w-[4em] sm:h-[4em] ml-2 mr-2 mb-7 mt-[1em] bg-secondary hover:bg-primary text-white text-sm rounded-full shadow-blue"
+            ? "flex justify-center items-center w-[3.5em] h-[3.5em] sm:w-[4em] sm:h-[4em] ml-2 mr-2 mb-7 mt-[1em] bg-secondary hover:bg-primary text-white text-sm rounded-full outline-0 shadow-blue animate-pulse"
+            : "flex justify-center items-center w-[3.5em] h-[3.5em] sm:w-[4em] sm:h-[4em] ml-2 mr-2 mb-7 mt-[1em] bg-secondary hover:bg-primary text-white text-sm rounded-full outline-0 shadow-blue"
         }
+        data-testid="microphone"
       >
         <i className="fa-solid fa-microphone p-6 text-2xl sm:text-3xl"></i>
       </button>
