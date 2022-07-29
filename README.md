@@ -63,7 +63,7 @@
   <ul>
     <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API">Web Speech API</a></li>
     <li><a href="https://wit.ai/">Wit.ai</a></li>
-    <li><a href="https://newsapi.org/">News API</a></li>
+    <li><a href="https://newsdata.io/">News API</a></li>
     <li><a href="https://www.weatherapi.com/">Weather API</a></li>
     <li><a href="https://developers.giphy.com/">GIPHY</a></li>
   </ul>
@@ -213,7 +213,7 @@ Project Link: https://hello-chatobot.netlify.app/
 - [Tailwind](https://tailwindcss.com/)
 - [Speech recognition](https://www.npmjs.com/package/react-speech-recognition)
 - [Wit.ai](https://wit.ai/)
-- [News API](https://newsapi.org/)
+- [News API](https://newsdata.io/)
 - [Weather API](https://www.weatherapi.com/)
 - [GIPHY developers](https://developers.giphy.com/)
 - [Vite](https://vitejs.dev/)
