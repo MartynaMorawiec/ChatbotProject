@@ -93,11 +93,11 @@
 
 ### :art: Color Reference
 
-| Color           | Hex                                         |
-| --------------- | ------------------------------------------- |
-| Primary Color   | <img src="./assets/primary.png"/> #246BFD   |
-| Secondary Color | <img src="./assets/secondary.png"/> #3C7CFE |
-| Accent Color    | <img src="./assets/accent.png"/> #F5F5F5    |
+| Color           | Hex                                             |
+| --------------- | ----------------------------------------------- |
+| Primary Color   | <img src="./src/assets/primary.png"/> #246BFD   |
+| Secondary Color | <img src="./src/assets/secondary.png"/> #3C7CFE |
+| Accent Color    | <img src="./src/assets/accent.png"/> #F5F5F5    |
 
 <!-- Env Variables -->
 
