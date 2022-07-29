@@ -24,7 +24,6 @@
   * [Environment Variables](#key-environment-variables)
 - [Getting Started](#toolbox-getting-started)
   * [Prerequisites](#bangbang-prerequisites)
-  * [Installation](#gear-installation)
   * [Running Tests](#test_tube-running-tests)
   * [Run Locally](#running-run-locally)
 - [Usage](#eyes-usage)
@@ -70,6 +69,13 @@
     <li><a href="https://newsapi.org/">newsapi.org</a></li>
     <li><a href="https://www.weatherapi.com/">weatherapi.com/</a></li>
     <li><a href="https://developers.giphy.com/">developers.giphy.com/</a></li>
+  </ul>
+</details>
+
+<details>
+  <summary>Testing</summary>
+  <ul>
+    <li><a href="https://www.cypress.io/">cypress.io</a></li>
   </ul>
 </details>
 
@@ -121,16 +127,6 @@ This project uses npm as package manager
 ```bash
 npm install
 ```
-
-<!-- Installation -->
-### :gear: Installation
-
-Install chatbot with npm
-
-```bash
-  npm install chatbot
-  cd chatbot
-```
    
 <!-- Running Tests -->
 ### :test_tube: Running Tests
@@ -138,7 +134,7 @@ Install chatbot with npm
 To run tests, run the following command
 
 ```bash
-  yarn test test
+  npm run cypress:open
 ```
 
 <!-- Run Locally -->
@@ -205,7 +201,7 @@ Distributed under the no License.
 
 Martyna Morawiec - martyna.jasinska1@gmail.com
 
-Project Link: 
+Project Link: https://hello-chatobot.netlify.app/
 
 
 <!-- Acknowledgments -->
@@ -219,5 +215,7 @@ Project Link:
  - [Weather API](https://www.weatherapi.com/)
  - [GIPHY developers](https://developers.giphy.com/)
  - [Vite](https://vitejs.dev/)
+ - [animate.css](https://animate.style/)
+ - [cyupress.io](https://www.cypress.io/)
 
  
