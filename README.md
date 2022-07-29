@@ -93,11 +93,11 @@
 
 ### :art: Color Reference
 
-| Color           | Hex                                                                                            |
-| --------------- | ---------------------------------------------------------------------------------------------- |
-| Primary Color   | <span style="width: 10px height: 10px; background:#246BFD; color:transparent;"></span> #246BFD |
-| Secondary Color | <span style="width: 10px height: 10px; background:#3C7CFE; color:transparent;"></span> #3C7CFE |
-| Accent Color    | <span style="width: 10px height: 10px; background:#F5F5F5; color:transparent;"></span> #F5F5F5 |
+| Color           | Hex                                         |
+| --------------- | ------------------------------------------- |
+| Primary Color   | <img src="./assets/primary.png"/> #246BFD   |
+| Secondary Color | <img src="./assets/secondary.png"/> #3C7CFE |
+| Accent Color    | <img src="./assets/accent.png"/> #F5F5F5    |
 
 <!-- Env Variables -->
 
@@ -196,7 +196,7 @@ Contributions are always welcome!
 
 ## :warning: License
 
-Distributed under the no License.
+Distributed under the MIT License.
 
 <!-- Contact -->
 
@@ -218,5 +218,5 @@ Project Link: https://hello-chatobot.netlify.app/
 - [Weather API](https://www.weatherapi.com/)
 - [GIPHY developers](https://developers.giphy.com/)
 - [Vite](https://vitejs.dev/)
-- [animate.css](https://animate.style/)
-- [cypress.io](https://www.cypress.io/)
+- [Animate.css](https://animate.style/)
+- [Cypress.io](https://www.cypress.io/)
