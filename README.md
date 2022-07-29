@@ -26,7 +26,6 @@
   - [Running Tests](#test_tube-running-tests)
   - [Run Locally](#running-run-locally)
 - [Usage](#eyes-usage)
-- [Roadmap](#compass-roadmap)
 - [Contributing](#wave-contributing)
 - [License](#warning-license)
 - [Contact](#handshake-contact)
@@ -63,7 +62,7 @@
   <summary>Server/API</summary>
   <ul>
     <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API">Web Speech API</a></li>
-    <li><a href="https://wit.ai/">Wit.ai/</a></li>
+    <li><a href="https://wit.ai/">Wit.ai</a></li>
     <li><a href="https://newsapi.org/">News API</a></li>
     <li><a href="https://www.weatherapi.com/">Weather API</a></li>
     <li><a href="https://developers.giphy.com/">GIPHY</a></li>
