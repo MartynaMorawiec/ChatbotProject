@@ -126,7 +126,7 @@ To run this project, you will need to add the following environment variables to
 This project uses npm as package manager
 
 ```bash
-npm install
+  npm install
 ```
 
 <!-- Running Tests -->
@@ -136,7 +136,7 @@ npm install
 To run tests, run the following command
 
 ```bash
-npm run cypress:open
+  npm run cypress:open
 ```
 
 <!-- Run Locally -->
