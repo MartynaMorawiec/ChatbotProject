@@ -1,31 +1,30 @@
 # ChatbotProject
 
-
 <div align="center">
-  <img src="./chatbot/src/assets/botSmile.png" alt="logo" width="200" height="auto" />
+  <img src="./src/assets/botSmile.png" alt="logo" width="200" height="auto" />
   <h1>Chatbot app</h1>
   
   <p>
       Ask chatbot about current weather in any city 🌤, latest news 📰 , YouTube videos 🎥 or a GIF message 😉. You can send a message to chatbot by using text input field or you can use a microphone button and leave a message using your voice 🎙.
   </p> 
 </div>
- 
 
 <br />
 
 <!-- Table of Contents -->
+
 # :notebook_with_decorative_cover: Table of Contents
 
 - [About the Project](#star2-about-the-project)
-  * [Screenshots](#camera-screenshots)
-  * [Tech Stack](#space_invader-tech-stack)
-  * [Features](#dart-features)
-  * [Color Reference](#art-color-reference)
-  * [Environment Variables](#key-environment-variables)
+  - [Screenshots](#camera-screenshots)
+  - [Tech Stack](#space_invader-tech-stack)
+  - [Features](#dart-features)
+  - [Color Reference](#art-color-reference)
+  - [Environment Variables](#key-environment-variables)
 - [Getting Started](#toolbox-getting-started)
-  * [Prerequisites](#bangbang-prerequisites)
-  * [Running Tests](#test_tube-running-tests)
-  * [Run Locally](#running-run-locally)
+  - [Prerequisites](#bangbang-prerequisites)
+  - [Running Tests](#test_tube-running-tests)
+  - [Run Locally](#running-run-locally)
 - [Usage](#eyes-usage)
 - [Roadmap](#compass-roadmap)
 - [Contributing](#wave-contributing)
@@ -33,24 +32,23 @@
 - [Contact](#handshake-contact)
 - [Acknowledgements](#gem-acknowledgements)
 
-  
-
 <!-- About the Project -->
+
 ## :star2: About the Project
 
-
 <!-- Screenshots -->
+
 ### :camera: Screenshots
 
 <div align="center"> 
-  <img src="./chatbot/src/assets/welcomePage.png" alt="screenshot" width="500px"/>
-  <img src="./chatbot/src/assets/emoji.png" alt="screenshot" />
-  <img src="./chatbot/src/assets/messages.png" alt="screenshot" />
-  <img src="./chatbot/src/assets/messagesExample.png" alt="screenshot" />
+  <img src="./src/assets/welcomePage.png" alt="screenshot"/>
+  <img src="./src/assets/emoji.png" alt="screenshot" />
+  <img src="./src/assets/messages.png" alt="screenshot" />
+  <img src="./src/assets/messagesExample.png" alt="screenshot" />
 </div>
 
-
 <!-- TechStack -->
+
 ### :space_invader: Tech Stack
 
 <details>
@@ -65,10 +63,10 @@
   <summary>Server/API</summary>
   <ul>
     <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API">Web Speech API</a></li>
-    <li><a href="https://wit.ai/">wit.ai/</a></li>
-    <li><a href="https://newsapi.org/">newsapi.org</a></li>
-    <li><a href="https://www.weatherapi.com/">weatherapi.com/</a></li>
-    <li><a href="https://developers.giphy.com/">developers.giphy.com/</a></li>
+    <li><a href="https://wit.ai/">Wit.ai/</a></li>
+    <li><a href="https://newsapi.org/">News API/a></li>
+    <li><a href="https://www.weatherapi.com/">Weather API</a></li>
+    <li><a href="https://developers.giphy.com/">GIPHY/</a></li>
   </ul>
 </details>
 
@@ -79,29 +77,30 @@
   </ul>
 </details>
 
-
 <!-- Features -->
+
 ### :dart: Features
-- Text input field 📬 
+
+- Text input field 📬
 - Voice message 🎙
 - Current weather 🌤 in any city
-- Random latest news 📰 
+- Random latest news 📰
 - GIF message 🧸
 - YouTube video 📹
 - Emoji picker ✨
 
-
 <!-- Color Reference -->
+
 ### :art: Color Reference
 
-| Color             | Hex                                                                |
-| ----------------- | ------------------------------------------------------------------ |
-| Primary Color | ![#246BFD] #246BFD |
-| Secondary Color | ![#3C7CFE] #3C7CFE |
-| Accent Color | ![#F5F5F5] #F5F5F5 |
-
+| Color           | Hex                                                                                              |
+| --------------- | ------------------------------------------------------------------------------------------------ |
+| Primary Color   | <span style="width: 10px height: 10px; background:#246BFD; color:transparent">aa</span> #246BFD  |
+| Secondary Color | <span style="width: 10px height: 10px; background:#3C7CFE; color:transparent;">aa</span> #3C7CFE |
+| Accent Color    | <span style="width: 10px height: 10px; background:#F5F5F5; color:transparent;">aa</span> #F5F5F5 |
 
 <!-- Env Variables -->
+
 ### :key: Environment Variables
 
 To run this project, you will need to add the following environment variables to your .env file
@@ -117,9 +116,11 @@ To run this project, you will need to add the following environment variables to
 `VITE_YOUTUBE_API_KEY=`
 
 <!-- Getting Started -->
-## 	:toolbox: Getting Started
+
+## :toolbox: Getting Started
 
 <!-- Prerequisites -->
+
 ### :bangbang: Prerequisites
 
 This project uses npm as package manager
@@ -127,17 +128,19 @@ This project uses npm as package manager
 ```bash
 npm install
 ```
-   
+
 <!-- Running Tests -->
+
 ### :test_tube: Running Tests
 
 To run tests, run the following command
 
 ```bash
-  npm run cypress:open
+npm run cypress:open
 ```
 
 <!-- Run Locally -->
+
 ### :running: Run Locally
 
 Clone the project
@@ -149,7 +152,7 @@ Clone the project
 Go to the project directory
 
 ```bash
-  cd chatbot
+  cd ChatbotProject
 ```
 
 Install dependencies
@@ -164,58 +167,56 @@ Start the server
   npm run dev
 ```
 
-
 <!-- Usage -->
+
 ## :eyes: Usage
 
 User can:
-- send a message to chatbot by using a text input field 📬 
+
+- send a message to chatbot by using a text input field 📬
 - use a microphone button and leave a message using voice 🎙
 - ask about the current weather 🌤 in any city by providing any question with the key word weather
-- get random latest news by providing any question with the key word news 📰 
+- get random latest news by providing any question with the key word news 📰
 - ask about a GIF using gif/GIF/meme/giphy as a first word and then specifying name of a GIF 🧸
 - get a random YouTube video writing youtube/video as a first word and then specifying title of the video 📹
 - greet the chatbot 😊
-- say goodbye to chatbot 👋 
-
+- say goodbye to chatbot 👋
 
 <!-- Contributing -->
+
 ## :wave: Contributing
 
 <a href="https://github.com/Louis3797/awesome-readme-template/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=Louis3797/awesome-readme-template" />
 </a>
 
-
 Contributions are always welcome!
 
-
 <!-- License -->
+
 ## :warning: License
 
-Distributed under the no License. 
-
+Distributed under the no License.
 
 <!-- Contact -->
+
 ## :handshake: Contact
 
 Martyna Morawiec - martyna.jasinska1@gmail.com
 
 Project Link: https://hello-chatobot.netlify.app/
 
-
 <!-- Acknowledgments -->
+
 ## :gem: Acknowledgements
 
- - [Emoji picker](https://www.npmjs.com/package/emoji-picker-react)
- - [Tailwind](https://tailwindcss.com/)
- - [Speech recognition](https://www.npmjs.com/package/react-speech-recognition)
- - [wit.ai](https://wit.ai/)
- - [News API](https://newsapi.org/)
- - [Weather API](https://www.weatherapi.com/)
- - [GIPHY developers](https://developers.giphy.com/)
- - [Vite](https://vitejs.dev/)
- - [animate.css](https://animate.style/)
- - [cyupress.io](https://www.cypress.io/)
-
- 
+- [Emoji picker](https://www.npmjs.com/package/emoji-picker-react)
+- [Tailwind](https://tailwindcss.com/)
+- [Speech recognition](https://www.npmjs.com/package/react-speech-recognition)
+- [Wit.ai](https://wit.ai/)
+- [News API](https://newsapi.org/)
+- [Weather API](https://www.weatherapi.com/)
+- [GIPHY developers](https://developers.giphy.com/)
+- [Vite](https://vitejs.dev/)
+- [animate.css](https://animate.style/)
+- [cypress.io](https://www.cypress.io/)
