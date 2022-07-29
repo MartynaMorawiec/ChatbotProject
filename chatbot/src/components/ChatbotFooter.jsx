@@ -5,6 +5,8 @@ import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
 import Picker from "emoji-picker-react";
+import happy from "../assets/happy.png";
+import smileBlack from "../assets/smileBlack.png";
 
 const ChatbotFooter = ({ onSend, onVoice }) => {
   const [isListening, setIsListening] = useState(false);
@@ -41,7 +43,15 @@ const ChatbotFooter = ({ onSend, onVoice }) => {
     onSend(text);
     setText("");
   };
-
+  const handleInput = (event) => {
+    setText(event.target.value);
+  };
+  const togglePicker = () => {
+    setShowPicker((val) => !val);
+  };
+  const toggleListening = () => {
+    setIsListening((prevState) => !prevState);
+  };
   const onEmojiClick = (event, emojiObject) => {
     setText((prevText) => prevText + emojiObject.emoji);
     setShowPicker(false);
@@ -59,15 +69,15 @@ const ChatbotFooter = ({ onSend, onVoice }) => {
           className="w-[85%] p-3 pl-12 bg-neutral-100 rounded-xl focus:outline-secondary focus:bg-focus"
           name="text"
           value={text}
-          onChange={(event) => setText(event.target.value)}
+          onChange={handleInput}
           data-testid="messageinput"
         />
         {showPicker ? (
           <>
             <img
               className="w-[22px] absolute top-[28%] left-[3%]"
-              src="../src/assets/happy.png"
-              onClick={() => setShowPicker((val) => !val)}
+              src={happy}
+              onClick={togglePicker}
               data-testid="emojiopend"
             />
             <Picker
@@ -83,8 +93,8 @@ const ChatbotFooter = ({ onSend, onVoice }) => {
         ) : (
           <img
             className="w-[21px] absolute top-[28%] left-[3%]"
-            src="../src/assets/smileBlack.png"
-            onClick={() => setShowPicker((val) => !val)}
+            src={smileBlack}
+            onClick={togglePicker}
             data-testid="emojiclosed"
           />
         )}
@@ -98,7 +108,7 @@ const ChatbotFooter = ({ onSend, onVoice }) => {
       </form>
 
       <button
-        onClick={() => setIsListening((prevState) => !prevState)}
+        onClick={toggleListening}
         className={
           isListening
             ? "flex justify-center items-center w-[3.5em] h-[3.5em] sm:w-[4em] sm:h-[4em] ml-2 mr-2 mb-7 mt-[1em] bg-secondary hover:bg-primary text-white text-sm rounded-full outline-0 shadow-blue animate-pulse"

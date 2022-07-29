@@ -2,16 +2,16 @@ import { v4 as uuidv4 } from "uuid";
 
 export const checkIsGifMessage = (messages) => {
   return ["gif", "giphy", "meme", "GIF"].includes(
-    messages[messages.length - 1].content.text.split(" ")[0]
+    messages?.[messages?.length - 1]?.content?.text.split(" ")[0]
   );
 };
 export const checkIsYoutubeMessage = (messages) => {
   return ["youtube", "video"].includes(
-    messages[messages.length - 1].content.text.split(" ")[0]
+    messages?.[messages?.length - 1]?.content?.text.split(" ")[0]
   );
 };
 export const checkIsMessageFromUser = (messages) => {
-  return messages?.length && messages?.[messages.length - 1]?.actor === "user";
+  return messages?.length && messages?.[messages?.length - 1]?.actor === "user";
 };
 export const checkWitEntities = (witData, intentsName, entitiesName) => {
   return (
@@ -25,13 +25,13 @@ export const checkWitTraits = (witData, intentsName, traitsName) => {
   );
 };
 export const getMessageQuery = (messages) => {
-  return messages[messages.length - 1].content.text
+  return messages?.[messages?.length - 1]?.content?.text
     .split(" ")
     .slice(1)
     .join(" ");
 };
 export const randomResponse = (response) =>
-  response[Math.floor(Math.random() * response.length)];
+  response?.[Math.floor(Math.random() * response?.length)];
 
 export const chatbotResponse = (setMessages, setLoading, type, content) => {
   setTimeout(() => {

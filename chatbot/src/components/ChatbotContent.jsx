@@ -7,7 +7,9 @@ const ChatbotContent = ({ messages, loading }) => {
   const element = useRef(null);
 
   useEffect(() => {
-    element.current.scrollIntoView({ block: "end", behavior: "smooth" });
+    setTimeout(() => {
+      element.current.scrollIntoView({ block: "end", behavior: "smooth" });
+    }, 100);
   });
 
   return (
@@ -21,7 +23,6 @@ const ChatbotContent = ({ messages, loading }) => {
         />
       ))}
       <div>{loading && <Loading />}</div>
-
       <div id={"el"} ref={element}></div>
     </div>
   );

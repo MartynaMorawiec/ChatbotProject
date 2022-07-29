@@ -19,7 +19,7 @@ describe("Chatbot page", () => {
     cy.visit("http://localhost:3000/chatbot");
     cy.contains("Hello 👋 , welcome to chatbot.");
   });
-  it("Chatbot contails all elements", () => {
+  it("Chatbot contains all elements", () => {
     cy.contains("Chatbot");
     cy.title().should("eq", "Chatbot");
     cy.get("[data-testid=logochatbot]").should("exist");
@@ -44,7 +44,6 @@ describe("Chatbot page", () => {
   it("User gets weather response", () => {
     cy.get("[data-testid=messageinput]").type("show me the weather in Gdynia");
     cy.get("[data-testid=sendbutton]").click();
-
     cy.get("[data-testid=weather]").should("exist");
   });
   it("User gets news response", () => {

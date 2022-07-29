@@ -27,6 +27,7 @@ import {
   goodbye,
   welcomeMessage,
   responseNotFound,
+  newsImage,
 } from "../app/chatbotLayoutConst";
 
 const ChatbotLayout = () => {
@@ -117,7 +118,9 @@ const ChatbotLayout = () => {
   };
 
   const fetchNewsData = () => {
-    const fullUrl = `${NEWS_API_URL}${import.meta.env.VITE_NEWS_API_KEY}`;
+    const fullUrl = `${NEWS_API_URL}${
+      import.meta.env.VITE_NEWS_API_KEY
+    }&language=en&country=us&category=politics,world`;
 
     fetchData(fullUrl, chatbotMessage, responseNotFound.news, setNews);
   };
@@ -158,11 +161,11 @@ const ChatbotLayout = () => {
     });
   };
   const chatbotNewsMessage = () => {
-    const article = randomResponse(news?.articles);
+    const article = randomResponse(news?.results);
     chatbotResponse(setMessages, setLoading, "card", {
       text: article?.title,
-      image: article?.urlToImage,
-      link: article?.url,
+      image: article?.image_url ? article?.image_url : newsImage,
+      link: article?.link,
     });
   };
 

@@ -39,3 +39,6 @@ export const responseNotFound = {
   news: "🔍 I can't find any news 🗞️ . Try again. 😉",
   movie: "🔍 I can't find a YouTube movie 🎦. Try again. 😉",
 };
+
+export const newsImage =
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6R4Zyx54iywRfUjiStobIkKV26Sivi2TufhRDlGG0mk0fgujq3EwdlR5Z82ilaLtGM5E&usqp=CAU";

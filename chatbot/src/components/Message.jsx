@@ -29,7 +29,10 @@ const Message = ({ actor, type, content }) => {
 
       {actor === "bot" && type === "weather" && (
         <section className="flex" data-testid="botweather">
-          <div className="max-w-[75%] bg-neutral-100 rounded-3xl rounded-tl-lg p-4 text-base sm:text-lg text-neutral-900" data-testid="weather">
+          <div
+            className="max-w-[75%] bg-neutral-100 rounded-3xl rounded-tl-lg p-4 text-base sm:text-lg text-neutral-900"
+            data-testid="weather"
+          >
             <img src={content.text?.current?.condition?.icon} />
             <p>
               Weather in {content.text?.location?.name},{" "}
@@ -47,7 +50,10 @@ const Message = ({ actor, type, content }) => {
       )}
 
       {actor === "bot" && type === "card" && (
-        <section className="flex flex-col max-w-[50%] rounded-2xl overflow-hidden" data-testid="botcard">
+        <section
+          className="flex flex-col max-w-[50%] rounded-2xl overflow-hidden"
+          data-testid="botcard"
+        >
           <img src={content.image} />
           <p className="bg-neutral-100 text-sm p-3 leading-tight">
             {content.text}
@@ -61,29 +67,20 @@ const Message = ({ actor, type, content }) => {
       )}
 
       {actor === "bot" && type === "image" && (
-        <section className="flex flex-col max-w-[50%] rounded-2xl overflow-hidden" data-testid="botimage">
+        <section
+          className="flex flex-col max-w-[50%] rounded-2xl overflow-hidden"
+          data-testid="botimage"
+        >
           <img src={content.image} />
         </section>
       )}
 
       {actor === "bot" && type === "youtube" && (
-        <section className="flex flex-col max-w-[45%] rounded-2xl overflow-hidden" data-testid="botyoutube">
+        <section
+          className="flex flex-col max-w-[45%] rounded-2xl overflow-hidden"
+          data-testid="botyoutube"
+        >
           <iframe title="video-player" src={content.video} />
-        </section>
-      )}
-
-      {actor === "bot" && type === "link" && (
-        <section className="flex flex-col w-6/12 rounded-2xl overflow-hidden">
-          <button className="bg-neutral-100 hover:bg-primary text-base sm:text-lg py-2 text-secondary hover:text-white focus:shadow-inner">
-            <a
-              href={content.link}
-              className="underline"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Click here
-            </a>
-          </button>
         </section>
       )}
     </div>
