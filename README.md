@@ -93,11 +93,11 @@
 
 ### :art: Color Reference
 
-| Color           | Hex                                                                                              |
-| --------------- | ------------------------------------------------------------------------------------------------ |
-| Primary Color   | <span style="width: 10px height: 10px; background:#246BFD; color:transparent">aa</span> #246BFD  |
-| Secondary Color | <span style="width: 10px height: 10px; background:#3C7CFE; color:transparent;">aa</span> #3C7CFE |
-| Accent Color    | <span style="width: 10px height: 10px; background:#F5F5F5; color:transparent;">aa</span> #F5F5F5 |
+| Color           | Hex                                                                                            |
+| --------------- | ---------------------------------------------------------------------------------------------- |
+| Primary Color   | <span style="width: 10px height: 10px; background:#246BFD; color:transparent;"></span> #246BFD |
+| Secondary Color | <span style="width: 10px height: 10px; background:#3C7CFE; color:transparent;"></span> #3C7CFE |
+| Accent Color    | <span style="width: 10px height: 10px; background:#F5F5F5; color:transparent;"></span> #F5F5F5 |
 
 <!-- Env Variables -->
 
