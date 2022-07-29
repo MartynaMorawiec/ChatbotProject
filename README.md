@@ -64,16 +64,16 @@
   <ul>
     <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API">Web Speech API</a></li>
     <li><a href="https://wit.ai/">Wit.ai/</a></li>
-    <li><a href="https://newsapi.org/">News API/a></li>
+    <li><a href="https://newsapi.org/">News API</a></li>
     <li><a href="https://www.weatherapi.com/">Weather API</a></li>
-    <li><a href="https://developers.giphy.com/">GIPHY/</a></li>
+    <li><a href="https://developers.giphy.com/">GIPHY</a></li>
   </ul>
 </details>
 
 <details>
   <summary>Testing</summary>
   <ul>
-    <li><a href="https://www.cypress.io/">cypress.io</a></li>
+    <li><a href="https://www.cypress.io/">Cypress.io</a></li>
   </ul>
 </details>
 
