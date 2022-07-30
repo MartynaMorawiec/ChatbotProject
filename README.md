@@ -116,8 +116,8 @@ You should add the following:
 
 Create intents and appropriate utterances that describe some ways someone can ask about the:
 
-- News: highlight the key word "news" and create the entity
-- Weather: highlight the location part of the sentence and create the entity
+- News: highlight the key word "news" and create the corresponding entity
+- Weather: highlight the location part of the sentence and create the corresponding entity
 - Greetings
 - Bye
 
