@@ -20,7 +20,7 @@
   - [Tech Stack](#space_invader-tech-stack)
   - [Features](#dart-features)
   - [Color Reference](#art-color-reference)
-  - [Wit.ai configuration](#technologist-Wit.ai-configuration)
+  - [Wit.ai configuration](#technologist-wit-configuration)
   - [Environment Variables](#key-environment-variables)
 - [Getting Started](#toolbox-getting-started)
   - [Prerequisites](#bangbang-prerequisites)
@@ -101,7 +101,7 @@
 
 <!-- Wit.ai configuration -->
 
-### :technologist: Wit.ai configuration
+### :technologist: Wit Configuration
 
 To run this project, you will need to create Wit app [Wit.ai](https://wit.ai/) and train it with appropriate utterances.
 
