@@ -197,7 +197,6 @@ User can:
 
 - send a message to chatbot by using a text input field 📬
 - use a microphone button and leave a message using voice 🎙 (For the smoothest experience use Chrome desktop browser. [Check supported browsers](https://www.npmjs.com/package/react-speech-recognition#supported-browsers))
-- current weather 🌤 in any city
 - ask about the current weather 🌤 in any city by providing any question with the key word weather
 - get random latest news by providing any question with the key word news 📰
 - ask about a GIF using gif/GIF/meme/giphy as a first word and then specifying name of a GIF 🧸
