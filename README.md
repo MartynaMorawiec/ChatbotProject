@@ -20,7 +20,7 @@
   - [Tech Stack](#space_invader-tech-stack)
   - [Features](#dart-features)
   - [Color Reference](#art-color-reference)
-  - [Wit.ai configuration](###technologist-Wit.ai-configuration)
+  - [Wit.ai configuration](#technologist-Wit.ai-configuration)
   - [Environment Variables](#key-environment-variables)
 - [Getting Started](#toolbox-getting-started)
   - [Prerequisites](#bangbang-prerequisites)
@@ -82,7 +82,7 @@
 ### :dart: Features
 
 - Text input field 📬
-- Voice message 🎙 (For the smoothest experience use Chrome (desktop) browser. [Check supported browsers](https://www.npmjs.com/package/react-speech-recognition#supported-browsers))
+- Voice message 🎙 (For the smoothest experience use Chrome desktop browser. [Check supported browsers](https://www.npmjs.com/package/react-speech-recognition#supported-browsers))
 - Current weather 🌤 in any city
 - Random latest news 📰
 - GIF message 🧸
@@ -196,7 +196,7 @@ Start the server
 User can:
 
 - send a message to chatbot by using a text input field 📬
-- use a microphone button and leave a message using voice 🎙 (For the smoothest experience use Chrome (desktop) browser. [Check supported browsers](https://www.npmjs.com/package/react-speech-recognition#supported-browsers))
+- use a microphone button and leave a message using voice 🎙 (For the smoothest experience use Chrome desktop browser. [Check supported browsers](https://www.npmjs.com/package/react-speech-recognition#supported-browsers))
 - Current weather 🌤 in any city
 - ask about the current weather 🌤 in any city by providing any question with the key word weather
 - get random latest news by providing any question with the key word news 📰
