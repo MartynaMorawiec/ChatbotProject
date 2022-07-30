@@ -20,7 +20,7 @@
   - [Tech Stack](#space_invader-tech-stack)
   - [Features](#dart-features)
   - [Color Reference](#art-color-reference)
-  - [Wit.ai configuration](###wit-Wit.ai-configuration)
+  - [Wit.ai configuration](###technologist-Wit.ai-configuration)
   - [Environment Variables](#key-environment-variables)
 - [Getting Started](#toolbox-getting-started)
   - [Prerequisites](#bangbang-prerequisites)
@@ -101,7 +101,7 @@
 
 <!-- Wit.ai configuration -->
 
-### :wit: Wit.ai configuration
+### :technologist: Wit.ai configuration
 
 To run this project, you will need to create Wit app [Wit.ai](https://wit.ai/) and train it with appropriate utterances.
 
@@ -118,7 +118,7 @@ Create intents and appropriate utterances that describe some ways someone can as
 
 - News: highlight the key word "news" and create the entity.
 - Weather: highlight the location part of the sentence and create the entity (use built-in intent and entity).
-- Greetings (use built-in trait and)
+- Greetings (use built-in trait)
 - Bye (use built-in trait)
 
 <!-- Env Variables -->
