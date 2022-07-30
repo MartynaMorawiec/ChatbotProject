@@ -20,6 +20,7 @@
   - [Tech Stack](#space_invader-tech-stack)
   - [Features](#dart-features)
   - [Color Reference](#art-color-reference)
+  - [Wit.ai configuration](###wit-Wit.ai-configuration)
   - [Environment Variables](#key-environment-variables)
 - [Getting Started](#toolbox-getting-started)
   - [Prerequisites](#bangbang-prerequisites)
@@ -81,7 +82,7 @@
 ### :dart: Features
 
 - Text input field 📬
-- Voice message 🎙
+- Voice message 🎙 (For the smoothest experience use Chrome (desktop) browser. [Check supported browsers](https://www.npmjs.com/package/react-speech-recognition#supported-browsers))
 - Current weather 🌤 in any city
 - Random latest news 📰
 - GIF message 🧸
@@ -97,6 +98,28 @@
 | Primary Color   | <img src="./src/assets/primary.png" alt="screenshot" width="10" height="10"/> #246BFD   |
 | Secondary Color | <img src="./src/assets/secondary.png" alt="screenshot" width="10" height="10"/> #3C7CFE |
 | Accent Color    | <img src="./src/assets/accent.png" alt="screenshot" width="10" height="10"/> #F5F5F5    |
+
+<!-- Wit.ai configuration -->
+
+### :wit: Wit.ai configuration
+
+To run this project, you will need to create Wit app [Wit.ai](https://wit.ai/) and train it with appropriate utterances.
+
+You should add the following:
+
+| Intents         | Entities     | Traits        |
+| --------------- | ------------ | ------------- |
+| get_news        | news         |               |
+| wit/get_weather | wit/location |               |
+| greeting        |              | wit/greetings |
+| bye             |              | wit/bye       |
+
+Create intents and appropriate utterances that describe some ways someone can ask about the:
+
+- News: highlight the key word "news" and create the entity.
+- Weather: highlight the location part of the sentence and create the entity (use built-in intent and entity).
+- Greetings (use built-in trait and)
+- Bye (use built-in trait)
 
 <!-- Env Variables -->
 
@@ -173,7 +196,8 @@ Start the server
 User can:
 
 - send a message to chatbot by using a text input field 📬
-- use a microphone button and leave a message using voice 🎙
+- use a microphone button and leave a message using voice 🎙 (For the smoothest experience use Chrome (desktop) browser. [Check supported browsers](https://www.npmjs.com/package/react-speech-recognition#supported-browsers))
+- Current weather 🌤 in any city
 - ask about the current weather 🌤 in any city by providing any question with the key word weather
 - get random latest news by providing any question with the key word news 📰
 - ask about a GIF using gif/GIF/meme/giphy as a first word and then specifying name of a GIF 🧸
