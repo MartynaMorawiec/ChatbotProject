@@ -203,7 +203,7 @@ Distributed under the MIT License.
 
 Martyna Morawiec - martyna.jasinska1@gmail.com
 
-Project Link: https://hello-chatobot.netlify.app/
+Project Link: https://hello-chatbot.netlify.app/
 
 <!-- Acknowledgments -->
 
