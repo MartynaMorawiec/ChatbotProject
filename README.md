@@ -103,7 +103,7 @@
 
 ### :technologist: Wit Configuration
 
-To run this project, you will need to create Wit app [Wit.ai](https://wit.ai/).
+To run this project, you will need to create [Wit app](https://wit.ai/).
 
 You should add the following:
 
