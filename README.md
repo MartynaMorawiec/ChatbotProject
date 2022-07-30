@@ -103,7 +103,7 @@
 
 ### :technologist: Wit Configuration
 
-To run this project, you will need to create Wit app [Wit.ai](https://wit.ai/) and train it with appropriate utterances.
+To run this project, you will need to create Wit app [Wit.ai](https://wit.ai/).
 
 You should add the following:
 
@@ -116,10 +116,10 @@ You should add the following:
 
 Create intents and appropriate utterances that describe some ways someone can ask about the:
 
-- News: highlight the key word "news" and create the entity.
-- Weather: highlight the location part of the sentence and create the entity (use built-in intent and entity).
-- Greetings (use built-in trait)
-- Bye (use built-in trait)
+- News: highlight the key word "news" and create the entity
+- Weather: highlight the location part of the sentence and create the entity
+- Greetings
+- Bye
 
 <!-- Env Variables -->
 
@@ -197,7 +197,7 @@ User can:
 
 - send a message to chatbot by using a text input field 📬
 - use a microphone button and leave a message using voice 🎙 (For the smoothest experience use Chrome desktop browser. [Check supported browsers](https://www.npmjs.com/package/react-speech-recognition#supported-browsers))
-- Current weather 🌤 in any city
+- current weather 🌤 in any city
 - ask about the current weather 🌤 in any city by providing any question with the key word weather
 - get random latest news by providing any question with the key word news 📰
 - ask about a GIF using gif/GIF/meme/giphy as a first word and then specifying name of a GIF 🧸
@@ -239,7 +239,7 @@ Project Link: https://hello-chatbot.netlify.app/
 - [Wit.ai](https://wit.ai/)
 - [News API](https://newsdata.io/)
 - [Weather API](https://www.weatherapi.com/)
-- [GIPHY developers](https://developers.giphy.com/)
+- [GIPHY](https://developers.giphy.com/)
 - [Vite](https://vitejs.dev/)
 - [Animate.css](https://animate.style/)
 - [Cypress.io](https://www.cypress.io/)
